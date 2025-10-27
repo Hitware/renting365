@@ -2,21 +2,34 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Routing\Middleware\ValidateSignature as Middleware;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 
-class ValidateSignature extends Middleware
+class ValidateSignature
 {
-    /**
-     * The names of the query string parameters that should be ignored.
-     *
-     * @var array<int, string>
-     */
-    protected $except = [
-        // 'fbclid',
-        // 'utm_campaign',
-        // 'utm_content',
-        // 'utm_medium',
-        // 'utm_source',
-        // 'utm_term',
-    ];
+    public function handle(Request $request, Closure $next): Response
+    {
+        if ($this->hasInvalidSignature($request)) {
+            Log::warning('Invalid request signature detected', [
+                'ip' => $request->ip(),
+                'url' => $request->fullUrl(),
+                'user_agent' => $request->userAgent(),
+            ]);
+
+            abort(403, 'Firma de solicitud inválida.');
+        }
+
+        return $next($request);
+    }
+
+    protected function hasInvalidSignature(Request $request): bool
+    {
+        if (!$request->hasValidSignature()) {
+            return true;
+        }
+
+        return false;
+    }
 }

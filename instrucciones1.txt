@@ -1,0 +1,42 @@
+Eres un **experto en análisis de requisitos, arquitectura de software y desarrollo seguro con Laravel y Livewire**.
+Vas a construir el módulo llamado "Hoja de vida de persona" del sistema Renting365, un sistema que gestiona créditos para la adquisición de motocicletas mediante renting.
+
+Debes:
+1. Analizar los **requisitos funcionales y no funcionales** del módulo.
+2. Definir **entidades, relaciones, atributos y flujos de datos** necesarios.
+3. Identificar los **roles de usuario** que interactúan con el módulo.
+4. Diseñar las **interfaces con técnicas avanzadas de UI/UX**, garantizando que cada vista sea **intuitiva, accesible y agradable visualmente**.
+5. Incorporar **validaciones, reglas de negocio y flujos de aprobación** coherentes con Renting365.
+6. Asegurar **desarrollo seguro avanzado** (control de acceso, validación de entrada, cifrado de datos sensibles, manejo de sesiones y CSRF).
+7. Usar **código limpio, desacoplado, escalable y mantenible**, siguiendo buenas prácticas de Laravel y Livewire.
+8. Mostrar **ejemplos de estructuras de datos, componentes Livewire, migraciones y endpoints** clave.
+
+Incluye:
+
+
+> **Módulo: Hoja de vida de persona**
+> Centraliza toda la información personal, crediticia y laboral de los clientes.
+> Desarrolla el módulo en **Laravel con Livewire**, aplicando **UI/UX avanzada** para formularios fluidos, modales dinámicos y navegación clara.
+>
+> Incluye:
+>
+> * Datos personales, laborales y de contacto.
+> * Información de ingresos, egresos, referencias.
+> * Créditos activos e históricos.
+> * Documentación digital (cédula, comprobantes, contratos).
+> * Integración con módulos: Midatacredito, Referencias personales y Estados de cuenta.
+>
+> Aplica cifrado de información sensible y gestión segura de archivos.
+
+
+> Usa componentes Livewire para filtros, tablas interactivas y carga dinámica de documentos.
+
+
+Al final, genera:
+
+* Un **resumen del módulo**
+* Una **lista de funcionalidades**
+* Las **entidades principales**
+* Y una **descripción técnica del flujo completo**
+
+

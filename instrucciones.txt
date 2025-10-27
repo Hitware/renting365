@@ -1,0 +1,255 @@
+Perfecto ✅
+A continuación tienes la **versión actualizada de los prompts profesionales para Renting365**, adaptados a tu nuevo requerimiento:
+
+Cada prompt ahora:
+
+* Incluye **el nombre y descripción del módulo** en el encabezado.
+* Especifica que el sistema se desarrollará en **Laravel con Livewire**.
+* Ordena que se apliquen **técnicas de UI/UX avanzada**, con vistas **amigables e intuitivas**.
+* Mantiene las exigencias de **seguridad avanzada, código limpio, escalable y mantenible**.
+
+---
+
+## 🧠 Prompt base general (para aplicar a todos los módulos)
+
+> **Prompt general para todos los módulos de Renting365**
+>
+> Eres un **experto en análisis de requisitos, arquitectura de software y desarrollo seguro con Laravel y Livewire**.
+> Vas a construir el módulo llamado **[nombre del módulo]** del sistema **Renting365**, un sistema que gestiona créditos para la adquisición de motocicletas mediante renting.
+>
+> Debes:
+>
+> 1. Analizar los **requisitos funcionales y no funcionales** del módulo.
+> 2. Definir **entidades, relaciones, atributos y flujos de datos** necesarios.
+> 3. Identificar los **roles de usuario** que interactúan con el módulo.
+> 4. Diseñar las **interfaces con técnicas avanzadas de UI/UX**, garantizando que cada vista sea **intuitiva, accesible y agradable visualmente**.
+> 5. Incorporar **validaciones, reglas de negocio y flujos de aprobación** coherentes con Renting365.
+> 6. Asegurar **desarrollo seguro avanzado** (control de acceso, validación de entrada, cifrado de datos sensibles, manejo de sesiones y CSRF).
+> 7. Usar **código limpio, desacoplado, escalable y mantenible**, siguiendo buenas prácticas de Laravel y Livewire.
+> 8. Mostrar **ejemplos de estructuras de datos, componentes Livewire, migraciones y endpoints** clave.
+>
+> Al final, genera:
+>
+> * Un **resumen del módulo**
+> * Una **lista de funcionalidades**
+> * Las **entidades principales**
+> * Y una **descripción técnica del flujo completo**
+
+---
+
+## 🔹 1. Crear cuentas de usuario
+
+> **Módulo: Crear cuentas de usuario**
+> Este módulo permite registrar y administrar usuarios en Renting365.
+> Desarrolla el módulo en **Laravel con Livewire**, aplicando **UI/UX avanzada** para una experiencia fluida y moderna.
+>
+> Incluye:
+>
+> * Registro por roles (Administrador, Asesor de crédito, Cliente).
+> * Validación de correo, documento y teléfono.
+> * Confirmación por correo o SMS (doble autenticación).
+> * Encriptación de contraseñas y control de acceso con middleware.
+> * Asignación y gestión de roles.
+> * Registro de actividad y auditoría de accesos.
+> * Interfaces modernas e intuitivas con formularios dinámicos Livewire.
+>
+> Aplica desarrollo seguro avanzado y estructura escalable.
+
+---
+
+## 🔹 2. Hoja de vida de moto
+
+> **Módulo: Hoja de vida de moto**
+> Administra toda la información técnica y de mantenimiento de las motocicletas financiadas.
+> Desarrolla el módulo en **Laravel con Livewire**, con **UI/UX avanzada** enfocada en visualización clara y navegación rápida.
+>
+> Debe incluir:
+>
+> * Datos técnicos: marca, modelo, cilindraje, placa, motor, chasis.
+> * Historial de propietarios, mantenimientos y siniestros.
+> * Estado actual (activo, en mantenimiento, siniestrado, vendido).
+> * Documentos asociados (SOAT, revisión técnico-mecánica, tarjeta de propiedad).
+> * Asociación con créditos activos.
+>
+> Usa componentes Livewire para filtros, tablas interactivas y carga dinámica de documentos.
+
+---
+
+## 🔹 3. Hoja de vida de persona
+
+> **Módulo: Hoja de vida de persona**
+> Centraliza toda la información personal, crediticia y laboral de los clientes.
+> Desarrolla el módulo en **Laravel con Livewire**, aplicando **UI/UX avanzada** para formularios fluidos, modales dinámicos y navegación clara.
+>
+> Incluye:
+>
+> * Datos personales, laborales y de contacto.
+> * Información de ingresos, egresos, referencias.
+> * Créditos activos e históricos.
+> * Documentación digital (cédula, comprobantes, contratos).
+> * Integración con módulos: Midatacredito, Referencias personales y Estados de cuenta.
+>
+> Aplica cifrado de información sensible y gestión segura de archivos.
+
+---
+
+## 🔹 4. Referencias personales
+
+> **Módulo: Referencias personales**
+> Gestiona las referencias personales y familiares de los clientes.
+> Desarrolla en **Laravel con Livewire** con **UI/UX avanzada**, orientada a formularios dinámicos y validaciones en tiempo real.
+>
+> Debe permitir:
+>
+> * Registrar múltiples referencias (nombre, relación, teléfono, dirección).
+> * Validar referencias manual o automáticamente.
+> * Asociarlas a la hoja de vida y estudios de crédito.
+> * Generar reportes de confiabilidad.
+>
+> Aplica normas de protección de datos personales y cifrado de información sensible.
+
+---
+
+## 🔹 5. Midatacredito
+
+> **Módulo: Midatacredito**
+> Consulta y almacena información crediticia proveniente de centrales de riesgo.
+> Desarrolla con **Laravel y Livewire**, aplicando **UI/UX avanzada** para presentar informes crediticios visuales y fáciles de interpretar.
+>
+> Debe incluir:
+>
+> * Conexión segura a APIs externas (Datacrédito, TransUnion).
+> * Consulta de score, comportamiento de pagos, deudas activas.
+> * Almacenamiento cifrado de resultados.
+> * Asociar la información con la hoja de vida del cliente.
+>
+> Implementa autenticación segura (OAuth2), HTTPS y auditoría de consultas.
+
+---
+
+## 🔹 6. Estados de cuenta de crédito
+
+> **Módulo: Estados de cuenta de crédito**
+> Visualiza y gestiona los estados financieros de los créditos activos.
+> Desarrolla en **Laravel con Livewire** con **UI/UX avanzada** para tablas interactivas, gráficos de deuda y descargas intuitivas.
+>
+> Incluye:
+>
+> * Detalle del crédito (valor, tasa, plazo, saldo).
+> * Pagos realizados y pendientes.
+> * Generación de estados de cuenta en PDF.
+> * Alertas automáticas por mora.
+> * Integración con “Historial de pagos” y “Pagar cuotas”.
+
+---
+
+## 🔹 7. Pagar cuotas
+
+> **Módulo: Pagar cuotas**
+> Registra y procesa los pagos de los créditos activos.
+> Desarrolla en **Laravel con Livewire**, aplicando **UI/UX avanzada** con formularios seguros y flujo de pago intuitivo.
+>
+> Debe incluir:
+>
+> * Validación de montos y fechas.
+> * Procesamiento con pasarelas (PayU, Stripe, Wompi).
+> * Generación de comprobantes y actualización automática del estado del crédito.
+> * Notificaciones al cliente por correo o SMS.
+>
+> Aplica medidas antifraude y cifrado de transacciones.
+
+---
+
+## 🔹 8. Programación de mantenimiento
+
+> **Módulo: Programación de mantenimiento**
+> Administra el mantenimiento preventivo y correctivo de las motos.
+> Desarrolla con **Laravel y Livewire**, utilizando **UI/UX avanzada** con calendarios interactivos, notificaciones y formularios de fácil acceso.
+>
+> Incluye:
+>
+> * Registro de mantenimientos, talleres, costos y kilometraje.
+> * Alertas automáticas por fechas próximas.
+> * Asociación con hoja de vida de moto.
+> * Historial técnico completo.
+
+---
+
+## 🔹 9. Reportes de siniestros
+
+> **Módulo: Reportes de siniestros**
+> Gestiona los incidentes o daños ocurridos a las motos.
+> Desarrolla con **Laravel y Livewire**, aplicando **UI/UX avanzada** con formularios multimedia y visualización de casos.
+>
+> Debe incluir:
+>
+> * Registro de accidentes con fecha, ubicación, tipo y descripción.
+> * Carga de fotos y documentos.
+> * Seguimiento de estado del caso.
+> * Comunicación segura con área de seguros.
+
+---
+
+## 🔹 10. Historial de pagos
+
+> **Módulo: Historial de pagos**
+> Registra todos los pagos efectuados por los clientes.
+> Desarrolla con **Laravel y Livewire**, aplicando **UI/UX avanzada** con tablas dinámicas, filtros y exportaciones claras.
+>
+> Incluye:
+>
+> * Registro cronológico de pagos.
+> * Clasificación por estado (puntual, mora, anticipado).
+> * Exportación a PDF o Excel.
+> * Auditoría de movimientos.
+
+---
+
+## 🔹 11. Club Renting
+
+> **Módulo: Club Renting**
+> Fideliza a los clientes mediante beneficios y programas de puntos.
+> Desarrolla en **Laravel con Livewire** con **UI/UX avanzada** que incorpore dashboards, animaciones y experiencias gamificadas.
+>
+> Debe incluir:
+>
+> * Clasificación por niveles de cliente.
+> * Gestión de puntos y recompensas.
+> * Notificaciones de beneficios y promociones.
+> * Integración con historial de pagos y sistema de calificación.
+
+---
+
+## 🔹 12. Escuela de Renting
+
+> **Módulo: Escuela de Renting**
+> Plataforma educativa interna para clientes y asesores.
+> Desarrolla con **Laravel y Livewire**, aplicando **UI/UX avanzada** para navegación tipo LMS (Learning Management System).
+>
+> Incluye:
+>
+> * Cursos, materiales, evaluaciones y certificados.
+> * Sistema de progreso y ranking.
+> * Módulo de inscripción y seguimiento.
+>
+> Usa seguridad avanzada para control de acceso y gestión de contenido.
+
+---
+
+## 🔹 13. Sistema de calificación
+
+> **Módulo: Sistema de calificación**
+> Evalúa a los clientes con base en su comportamiento crediticio y de mantenimiento.
+> Desarrolla en **Laravel con Livewire**, aplicando **UI/UX avanzada** para dashboards analíticos y visualizaciones interactivas.
+>
+> Incluye:
+>
+> * Cálculo de score interno (1 a 100).
+> * Integración con historial de pagos y Midatacredito.
+> * Reportes y métricas de desempeño.
+> * Impacto directo en beneficios del Club Renting.
+
+---
+
+¿Quieres que te genere una **versión en formato Markdown o JSON estructurada** para que puedas **integrarla directamente a tu pipeline de desarrollo con IA (por ejemplo en Copilot, Cursor o ChatGPT Workspace)**?
+Así cada prompt se ejecuta automáticamente como plantilla para generar cada módulo.

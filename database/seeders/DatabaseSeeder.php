@@ -12,11 +12,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->command->info('🌱 Starting database seeding...');
+        $this->command->info('');
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Seed roles and permissions first
+        $this->call(RolesAndPermissionsSeeder::class);
+
+        // Seed client permissions
+        $this->call(ClientPermissionsSeeder::class);
+
+        // Seed Fleet Manager role and permissions
+        $this->call(FleetManagerRoleSeeder::class);
+
+        // Then seed demo users
+        $this->call(DemoUsersSeeder::class);
+
+        // Seed test data (users and clients)
+        $this->call(TestDataSeeder::class);
+
+        $this->command->info('');
+        $this->command->info('✨ Database seeding completed successfully!');
     }
 }

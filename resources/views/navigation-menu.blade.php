@@ -15,6 +15,26 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @can('clients.view')
+                    <x-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')">
+                        Clientes
+                    </x-nav-link>
+                    @endcan
+                    @can('motorcycles.view')
+                    <x-nav-link href="{{ route('motorcycles.index') }}" :active="request()->routeIs('motorcycles.*')">
+                        Motos
+                    </x-nav-link>
+                    @endcan
+                    @can('clients.view')
+                    <x-nav-link href="{{ route('leasing-contracts.index') }}" :active="request()->routeIs('leasing-contracts.*')">
+                        Contratos
+                    </x-nav-link>
+                    @endcan
+                    @can('users.view')
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
+                        Usuarios
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
