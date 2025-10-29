@@ -31,4 +31,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'lex' => [
+        'bot_id' => env('AWS_LEX_BOT_ID'),
+        'bot_alias_id' => env('AWS_LEX_BOT_ALIAS_ID'),
+        'locale_id' => env('AWS_LEX_LOCALE_ID', 'es_ES'),
+    ],
+
+    'recaptcha' => [
+        'site_key' => env('RECAPTCHA_SITE_KEY'),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY'),
+    ],
+
 ];

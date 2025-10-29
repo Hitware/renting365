@@ -1,39 +1,37 @@
-<x-form-section submit="updatePassword">
-    <x-slot name="title">
-        {{ __('Update Password') }}
-    </x-slot>
+<div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Actualizar Contraseña</h3>
+    <p class="text-sm text-gray-600 mb-6">Asegúrate de que tu cuenta use una contraseña larga y aleatoria para mantenerse segura.</p>
 
-    <x-slot name="description">
-        {{ __('Ensure your account is using a long, random password to stay secure.') }}
-    </x-slot>
+    <form wire:submit.prevent="updatePassword">
+        <div class="space-y-6">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Contraseña Actual</label>
+                <input type="password" wire:model="state.current_password" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition" placeholder="••••••••">
+                @error('current_password') <span class="text-red-500 text-sm mt-2">{{ $message }}</span> @enderror
+            </div>
 
-    <x-slot name="form">
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="current_password" value="{{ __('Current Password') }}" />
-            <x-input id="current_password" type="password" class="mt-1 block w-full" wire:model="state.current_password" autocomplete="current-password" />
-            <x-input-error for="current_password" class="mt-2" />
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Nueva Contraseña</label>
+                <input type="password" wire:model="state.password" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition" placeholder="••••••••">
+                @error('password') <span class="text-red-500 text-sm mt-2">{{ $message }}</span> @enderror
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Confirmar Contraseña</label>
+                <input type="password" wire:model="state.password_confirmation" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition" placeholder="••••••••">
+                @error('password_confirmation') <span class="text-red-500 text-sm mt-2">{{ $message }}</span> @enderror
+            </div>
         </div>
 
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="password" value="{{ __('New Password') }}" />
-            <x-input id="password" type="password" class="mt-1 block w-full" wire:model="state.password" autocomplete="new-password" />
-            <x-input-error for="password" class="mt-2" />
+        <div class="mt-6 flex items-center justify-end gap-3">
+            <div wire:loading.remove wire:target="updatePassword">
+                @if (session()->has('saved'))
+                <span class="text-sm text-green-600 font-medium">✓ Guardado</span>
+                @endif
+            </div>
+            <button type="submit" wire:loading.attr="disabled" class="px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white rounded-xl hover:from-orange-700 hover:to-orange-800 transition font-medium shadow-lg">
+                Actualizar Contraseña
+            </button>
         </div>
-
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-            <x-input id="password_confirmation" type="password" class="mt-1 block w-full" wire:model="state.password_confirmation" autocomplete="new-password" />
-            <x-input-error for="password_confirmation" class="mt-2" />
-        </div>
-    </x-slot>
-
-    <x-slot name="actions">
-        <x-action-message class="me-3" on="saved">
-            {{ __('Saved.') }}
-        </x-action-message>
-
-        <x-button>
-            {{ __('Save') }}
-        </x-button>
-    </x-slot>
-</x-form-section>
+    </form>
+</div>

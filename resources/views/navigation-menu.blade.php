@@ -29,6 +29,9 @@
                     <x-nav-link href="{{ route('leasing-contracts.index') }}" :active="request()->routeIs('leasing-contracts.*')">
                         Contratos
                     </x-nav-link>
+                    <x-nav-link href="{{ route('credit-applications.index') }}" :active="request()->routeIs('credit-applications.*')">
+                        Solicitudes Crédito
+                    </x-nav-link>
                     @endcan
                     @can('users.view')
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">

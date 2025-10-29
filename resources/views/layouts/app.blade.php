@@ -13,36 +13,21 @@
 
     <!-- Tailwind CSS CDN (temporal para desarrollo) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Styles -->
     @livewireStyles
     
     <style>
-        /* Asegurar que los textos del sidebar sean visibles */
-        aside.bg-gradient-to-b a,
-        aside.bg-gradient-to-b button,
-        aside.bg-gradient-to-b span,
-        aside.bg-gradient-to-b p {
-            color: white !important;
-        }
-        
-        aside .text-orange-200 {
-            color: rgb(254 215 170) !important;
-        }
-        
-        /* Asegurar que Alpine.js funcione correctamente */
         [x-cloak] { display: none !important; }
-        
-        /* Forzar colores del sidebar */
-        .sidebar-orange {
-            background: linear-gradient(to bottom, #ea580c, #c2410c) !important;
-        }
     </style>
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <div class="min-h-screen flex" x-data="{ sidebarOpen: true }">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'w-64' : 'w-20'" class="sidebar-orange bg-gradient-to-b from-orange-600 to-orange-700 text-white transition-all duration-300 flex flex-col" style="background: linear-gradient(to bottom, #ea580c, #c2410c);">
+        <aside :class="sidebarOpen ? 'w-64' : 'w-20'" class="bg-gradient-to-b from-orange-600 to-orange-700 text-white transition-all duration-300 flex flex-col fixed h-screen z-50">
             <!-- Logo -->
             <div class="p-4 border-b border-orange-500">
                 <div class="flex items-center" :class="!sidebarOpen && 'justify-center'">
@@ -57,7 +42,6 @@
 
             <!-- Navigation -->
             <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-                <!-- Dashboard -->
                 <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('dashboard') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
@@ -66,7 +50,6 @@
                 </a>
 
                 @can('users.view')
-                <!-- Usuarios -->
                 <a href="{{ route('users.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('users.*') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -76,7 +59,6 @@
                 @endcan
 
                 @can('motorcycles.view')
-                <!-- Motocicletas -->
                 <a href="{{ route('motorcycles.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('motorcycles.*') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -86,22 +68,25 @@
                 @endcan
 
                 @can('clients.view')
-                <!-- Clientes (Hoja de Vida) -->
-                <a href="{{ route('clients.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('clients.*') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
+                <a href="{{ route('clients.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('clients.index') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                     <span x-show="sidebarOpen" class="ml-3 font-medium">Clientes</span>
                 </a>
-                @endcan
 
-                @can('credits.view')
-                <!-- Solicitudes -->
-                <a href="#" class="flex items-center px-3 py-2.5 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors duration-200">
+                <a href="{{ route('credit-applications.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('credit-applications.*') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
-                    <span x-show="sidebarOpen" class="ml-3 font-medium">Solicitudes</span>
+                    <span x-show="sidebarOpen" class="ml-3 font-medium">Solicitudes Crédito</span>
+                </a>
+
+                <a href="{{ route('leasing-contracts.index') }}" class="flex items-center px-3 py-2.5 rounded-lg {{ request()->routeIs('leasing-contracts.*') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10' }} transition-colors duration-200">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span x-show="sidebarOpen" class="ml-3 font-medium">Contratos</span>
                 </a>
                 @endcan
             </nav>
@@ -120,7 +105,7 @@
                     </button>
 
                     <div x-show="open" @click.away="open = false" x-transition class="absolute bottom-full left-0 right-0 mb-2 bg-white rounded-lg shadow-lg py-1" style="display: none;">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             Mi Perfil
                         </a>
                         <div class="border-t border-gray-100"></div>
@@ -146,9 +131,9 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col min-h-screen" :class="sidebarOpen ? 'ml-64' : 'ml-20'" style="transition: margin-left 300ms;">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm border-b border-gray-200 z-10">
+            <header class="bg-white shadow-sm border-b border-gray-200">
                 <div class="px-6 py-4">
                     @if (isset($header))
                         {{ $header }}

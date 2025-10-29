@@ -153,27 +153,7 @@
                     </div>
                 </form>
 
-                <!-- Demo Credentials (remove in production) -->
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <p class="text-xs text-gray-500 text-center mb-3 font-semibold">👨‍💼 Usuarios de Prueba</p>
-                    <div class="grid grid-cols-1 gap-2">
-                        <div class="bg-orange-50 rounded-lg p-3 text-xs">
-                            <p class="font-semibold text-orange-900 mb-1">🔐 Administrador</p>
-                            <p class="text-orange-700"><span class="font-medium">Email:</span> admin@renting365.co</p>
-                            <p class="text-orange-700"><span class="font-medium">Password:</span> Admin123!</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-3 text-xs">
-                            <p class="font-semibold text-green-900 mb-1">💼 Asesor de Crédito</p>
-                            <p class="text-green-700"><span class="font-medium">Email:</span> asesor@renting365.co</p>
-                            <p class="text-green-700"><span class="font-medium">Password:</span> Asesor123!</p>
-                        </div>
-                        <div class="bg-purple-50 rounded-lg p-3 text-xs">
-                            <p class="font-semibold text-purple-900 mb-1">👤 Cliente</p>
-                            <p class="text-purple-700"><span class="font-medium">Email:</span> cliente@renting365.co</p>
-                            <p class="text-purple-700"><span class="font-medium">Password:</span> Cliente123!</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 

@@ -128,6 +128,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Migration Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is used to protect the migration route. Change this to a secure
+    | random string and keep it secret. Use it to run migrations via browser.
+    |
+    */
+
+    'migration_key' => env('MIGRATION_KEY', 'renting365-secret-key-2024'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Maintenance Mode Driver
     |--------------------------------------------------------------------------
     |

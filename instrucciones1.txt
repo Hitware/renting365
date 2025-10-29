@@ -1,42 +1,60 @@
-Eres un **experto en análisis de requisitos, arquitectura de software y desarrollo seguro con Laravel y Livewire**.
-Vas a construir el módulo llamado "Hoja de vida de persona" del sistema Renting365, un sistema que gestiona créditos para la adquisición de motocicletas mediante renting.
+Perfecto ✅ Aquí tienes un **prompt especializado**, completamente adaptado a tu negocio y a tu stack tecnológico (Laravel + Livewire), con un enfoque en **captación de leads para créditos de moto** y **gestión administrativa avanzada**.
 
-Debes:
-1. Analizar los **requisitos funcionales y no funcionales** del módulo.
-2. Definir **entidades, relaciones, atributos y flujos de datos** necesarios.
-3. Identificar los **roles de usuario** que interactúan con el módulo.
-4. Diseñar las **interfaces con técnicas avanzadas de UI/UX**, garantizando que cada vista sea **intuitiva, accesible y agradable visualmente**.
-5. Incorporar **validaciones, reglas de negocio y flujos de aprobación** coherentes con Renting365.
-6. Asegurar **desarrollo seguro avanzado** (control de acceso, validación de entrada, cifrado de datos sensibles, manejo de sesiones y CSRF).
-7. Usar **código limpio, desacoplado, escalable y mantenible**, siguiendo buenas prácticas de Laravel y Livewire.
-8. Mostrar **ejemplos de estructuras de datos, componentes Livewire, migraciones y endpoints** clave.
+---
 
-Incluye:
+### 🚀 **PROMPT ESPECIALIZADO: Módulo “Solicitud de Crédito Moto” (Home + Administración)**
 
+Actúa como un **experto en desarrollo web con Laravel y Livewire**, especializado en **sitios de solicitud de crédito y captación de leads financieros**.
+Utiliza **técnicas avanzadas de UI/UX** para construir una experiencia **intuitiva, atractiva y centrada en la conversión del usuario**.
+Tu tarea es **diseñar y describir detalladamente** el módulo **“Solicitud de Crédito Moto”**, compuesto por dos partes:
 
-> **Módulo: Hoja de vida de persona**
-> Centraliza toda la información personal, crediticia y laboral de los clientes.
-> Desarrolla el módulo en **Laravel con Livewire**, aplicando **UI/UX avanzada** para formularios fluidos, modales dinámicos y navegación clara.
->
-> Incluye:
->
-> * Datos personales, laborales y de contacto.
-> * Información de ingresos, egresos, referencias.
-> * Créditos activos e históricos.
-> * Documentación digital (cédula, comprobantes, contratos).
-> * Integración con módulos: Midatacredito, Referencias personales y Estados de cuenta.
->
-> Aplica cifrado de información sensible y gestión segura de archivos.
+---
 
+#### 🏠 **1. Sección Pública (Home del sitio web): Captura de Leads**
 
-> Usa componentes Livewire para filtros, tablas interactivas y carga dinámica de documentos.
+Diseña una **sección destacada en el home** enfocada en captar usuarios interesados en adquirir una moto mediante crédito.
+Incluye los siguientes elementos:
 
+* **Diseño visual atractivo y persuasivo**, que invite al usuario a completar el formulario (usa colores contrastantes, títulos con llamados a la acción y un enfoque emocional).
+* **Formulario de solicitud básica** con campos como:
 
-Al final, genera:
+  * Nombre completo
+  * Cédula
+  * Teléfono
+  * Correo electrónico
+  * Ciudad
+  * Tipo de moto deseada
+  * Valor aproximado de la moto
+* **Botón principal de acción (“Solicita tu crédito ahora”)** visible tanto en la parte superior del home como dentro del bloque principal, que redirija al formulario o lo despliegue dinámicamente.
+* **Mensajes de validación amigables** y confirmación visual cuando el usuario envía su información.
+* **Diseño responsive y liviano**, con transiciones suaves y jerarquía visual clara.
 
-* Un **resumen del módulo**
-* Una **lista de funcionalidades**
-* Las **entidades principales**
-* Y una **descripción técnica del flujo completo**
+---
 
+#### 🧩 **2. Módulo Administrativo (para Administrador y Asesor)**
 
+Diseña un panel administrativo profesional y funcional que permita gestionar la información de los usuarios que han completado la solicitud.
+Debe incluir:
+
+* **Tabla dinámica** con la información de los usuarios (nombre, cédula, ciudad, teléfono, estado del estudio, asesor asignado, fecha de solicitud).
+* **Filtros avanzados** para buscar por:
+
+  * Nombre, cédula, ciudad
+  * Estado del estudio (en estudio, aprobado, rechazado, pendiente)
+  * Rango de fechas
+* **Opciones de gestión:**
+
+  * Cambiar el estado de estudio de un usuario
+  * Asignar un asesor responsable
+  * Agregar observaciones internas
+* **Dashboard con métricas clave:** número de solicitudes, aprobaciones, rechazos, solicitudes en estudio, y tasa de conversión.
+* **Notificaciones o alertas visuales** para nuevos registros o cambios de estado.
+* **Diseño modular, limpio y escalable**, integrable fácilmente en sistemas existentes.
+
+---
+
+💡 **Indicaciones adicionales:**
+
+* Toda la interfaz debe desarrollarse con **Laravel + Livewire**.
+* Aplica **principios de diseño UI/UX modernos** (jerarquía visual, microinteracciones, formularios claros, CTA visible).
+* El objetivo principal es **maximizar la conversión de leads** y **optimizar la gestión interna de solicitudes**.
