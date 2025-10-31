@@ -10,20 +10,20 @@ class SimpleChatbotService
             'response' => "¡Hola! 👋 Bienvenido a Renting365. Soy tu asistente virtual y estoy aquí para ayudarte.\n\n¿En qué puedo ayudarte hoy?\n\n• Ver planes disponibles\n• Conocer requisitos\n• Información de motos\n• Hablar con un asesor"
         ],
         'planes' => [
-            'keywords' => ['planes', 'plan', 'cuanto cuesta', 'precio', 'precios', 'cuotas'],
-            'response' => "Tenemos 3 planes disponibles:\n\n🏍️ Plan Delivery: $350.000/mes - Ideal para trabajadores de delivery\n🎓 Plan Universitario: $280.000/mes - Especial para estudiantes\n💼 Plan Emprendedor: $400.000/mes - Para empresarios\n\nTodos incluyen SOAT, seguro de vida, todo riesgo y mantenimiento.\n\n*Se requiere cuota inicial (consulta monto con asesor)\n\n¿Sobre cuál te gustaría más información?"
+            'keywords' => ['planes', 'plan', 'cuanto cuesta', 'precio', 'precios', 'cuotas', 'diario', 'dia'],
+            'response' => "Tenemos 3 planes disponibles:\n\n📦 Plan Delivery - Para Trabajadores\n🎓 Plan Universitario - Para Estudiantes\n🛠️ Plan Emprendedor - Para Empresarios\n\n💵 Precio: $35.000 COP / Diarios\n\nTodos incluyen:\n• SOAT\n• Seguro de Vida\n• Seguro Todo Riesgo\n• Fondo de Siniestralidad\n• Asistencia Jurídica\n\n¿Quieres más información?"
         ],
         'requisitos' => [
             'keywords' => ['requisitos', 'requisito', 'documentos', 'necesito', 'que necesito', 'papeles'],
             'response' => "Los requisitos son muy sencillos:\n\n✓ Cédula de ciudadanía\n✓ Licencia de conducción vigente\n✓ Referencias personales\n✓ Cuota inicial (consulta monto con asesor)\n\n¿Te gustaría iniciar el proceso de solicitud?"
         ],
         'cuota_inicial' => [
-            'keywords' => ['cuota inicial', 'inicial', 'cuota', 'anticipo', 'pago inicial', 'dinero inicial'],
-            'response' => "Sí, se requiere una cuota inicial para adquirir tu moto.\n\nEl monto de la cuota inicial varía según el plan y la moto que elijas.\n\n¿Quieres que un asesor te informe el monto exacto? Te puedo conectar por WhatsApp."
+            'keywords' => ['cuota inicial', 'inicial', 'cuota', 'anticipo', 'pago inicial', 'dinero inicial', 'inversion', 'fondo'],
+            'response' => "Sí, se requiere un pago inicial que incluye:\n\n💰 Aporte al Fondo de Siniestralidad (10% del valor de la moto)\n🛡️ Seguros obligatorios iniciales\n\nEste fondo es clave para tu seguridad financiera en caso de accidente.\n\n¿Quieres que un asesor te informe el monto exacto? Te puedo conectar por WhatsApp."
         ],
         'motos' => [
-            'keywords' => ['motos', 'moto', 'modelos', 'modelo', 'motocicletas', 'cual moto'],
-            'response' => "Nuestras motos disponibles:\n\n🏍️ Boxer 150 - Ideal para delivery y trabajo urbano\n🏍️ Discover 125 - Perfecta para estudiantes\n🏍️ Pulsar 180 - Para emprendedores exigentes\n\nTodas con mantenimiento incluido y seguro completo. ¿Quieres ver la ficha técnica de alguna?"
+            'keywords' => ['motos', 'moto', 'modelos', 'modelo', 'motocicletas', 'cual moto', 'auteco', 'tvs'],
+            'response' => "Actualmente ofrecemos:\n\n🏍️ AUTECO TVS Sport 100\n\n• Motor 100cc\n• Ideal para delivery y trabajo urbano\n• Bajo consumo de combustible\n• Fácil mantenimiento\n• Diseño moderno y cómodo\n\n💵 $35.000 / Diarios\n\nIncluye mantenimiento y seguro completo. ¿Quieres más información?"
         ],
         'cobertura' => [
             'keywords' => ['donde', 'ubicacion', 'ciudad', 'ciudades', 'cobertura', 'operan'],
@@ -34,8 +34,8 @@ class SimpleChatbotService
             'response' => "Todos nuestros planes incluyen:\n\n✓ SOAT\n✓ Seguro de Vida\n✓ Seguro Todo Riesgo\n✓ Fondo de Siniestralidad\n✓ Asistencia Jurídica\n✓ Mantenimiento preventivo y correctivo\n✓ Soporte técnico 24/7\n\n¡Todo en una sola cuota mensual!"
         ],
         'proceso' => [
-            'keywords' => ['como funciona', 'proceso', 'pasos', 'como solicitar', 'como empezar'],
-            'response' => "El proceso es muy simple:\n\n1️⃣ Envíanos tus datos y documentos\n2️⃣ Aprobación en 24-48 horas\n3️⃣ Escuela Renting365 (formación inicial)\n4️⃣ ¡Recibe tu moto y empieza a generar ingresos!\n\n¿Quieres que te contacte un asesor?"
+            'keywords' => ['como funciona', 'proceso', 'pasos', 'como solicitar', 'como empezar', 'funciona'],
+            'response' => "El proceso es muy simple:\n\n1️⃣ Envíanos tus datos y documentos\n2️⃣ Aprobación en 24-48 horas\n3️⃣ Escuela Renting365 (formación obligatoria)\n   • Charla con Psicólogo\n   • Seguridad Vial\n   • Plan Emprendedor\n   • Manejo de Finanzas\n   • Servicio al Cliente\n4️⃣ Recibe tu moto\n5️⃣ ¡Empieza a generar ingresos!\n\n¿Quieres iniciar el proceso?"
         ],
         'contacto' => [
             'keywords' => ['contacto', 'asesor', 'hablar', 'telefono', 'whatsapp', 'llamar', 'comunicar', 'si', 'quiero'],
@@ -47,12 +47,12 @@ class SimpleChatbotService
             ]
         ],
         'duracion' => [
-            'keywords' => ['duracion', 'tiempo', 'contrato', 'cuanto tiempo', 'meses'],
-            'response' => "Ofrecemos contratos flexibles:\n\n⏱️ Desde 6 meses hasta 24 meses\n\nTú eliges la duración según tus necesidades. Al finalizar, tienes opción de compra de la moto a precio preferencial."
+            'keywords' => ['duracion', 'tiempo', 'contrato', 'cuanto tiempo', 'meses', 'finalizar', 'terminar'],
+            'response' => "El modelo de Renting365:\n\n📄 La moto se registra a tu nombre desde el día 1\n🔒 Con prenda de garantía a favor de Renting365\n💵 Pagas cuota diaria o semanal\n✅ Al finalizar el contrato, la moto es 100% tuya\n\nSi tienes dificultades, puedes ceder tu cupo a otra persona (previa autorización).\n\n¿Te gustaría conocer más detalles?"
         ],
         'accidente' => [
-            'keywords' => ['accidente', 'choque', 'daño', 'siniestro', 'que pasa si'],
-            'response' => "Estás completamente protegido:\n\n🛡️ Seguro todo riesgo incluido\n💰 Fondo de siniestralidad\n📞 Asistencia 24/7\n⚖️ Asistencia jurídica\n\nNosotros nos encargamos de todo. Tu tranquilidad es nuestra prioridad."
+            'keywords' => ['accidente', 'choque', 'daño', 'siniestro', 'que pasa si', 'incapacidad'],
+            'response' => "Estás completamente protegido:\n\n🛡️ Seguro todo riesgo incluido\n💰 Fondo de Siniestralidad\n   • Cubre tus cuotas si quedas incapacitado temporalmente\n   • Te recuperas sin preocuparte por los pagos\n📞 Asistencia 24/7\n⚖️ Asistencia jurídica\n\nTu tranquilidad es nuestra prioridad."
         ],
         'gracias' => [
             'keywords' => ['gracias', 'muchas gracias', 'thank you', 'excelente', 'perfecto'],
@@ -70,6 +70,18 @@ class SimpleChatbotService
         'horario' => [
             'keywords' => ['horario', 'hora', 'cuando', 'abierto', 'atienden'],
             'response' => "Nuestro horario de atención:\n\n🕒 Lunes a Sábado: 8:00 AM - 6:00 PM\n🚫 Domingos: Cerrado\n\n¡Pero este chatbot está disponible 24/7 para ti!"
+        ],
+        'escuela' => [
+            'keywords' => ['escuela', 'capacitacion', 'formacion', 'curso', 'charlas', 'obligatorio'],
+            'response' => "La Escuela Renting365 es OBLIGATORIA e INCLUIDA:\n\n🧠 1. Charla con Psicólogo\n🚗 2. Seguridad Vial\n💼 3. Plan Emprendedor\n💰 4. Manejo de Finanzas\n👥 5. Servicio al Cliente\n\nEs una inversión en tu desarrollo personal y profesional. ¡Te preparamos para el éxito!"
+        ],
+        'club' => [
+            'keywords' => ['club', 'comunidad', 'descuentos', 'beneficios club'],
+            'response' => "Club Renting365 - Exclusivo para clientes:\n\n👥 Comunidad exclusiva\n🔔 Alertas de movilidad en tiempo real\n🔧 Descuentos en repuestos y mantenimiento\n💼 Bolsa de empleo para domiciliarios\n📝 Envía tu CV para oportunidades laborales\n\n¡Incluido con tu plan Renting365!"
+        ],
+        'legal' => [
+            'keywords' => ['legal', 'impuestos', 'formal', 'empresa', 'confiable'],
+            'response' => "Renting365 es 100% legal y formal:\n\n✅ Operamos bajo todas las leyes colombianas\n📊 Cumplimos con obligaciones tributarias (IVA e Impuesto de Renta)\n🏢 Empresa comprometida con la economía local\n🔒 Transparencia en todos nuestros procesos\n\n¡Confía en nosotros!"
         ]
     ];
 

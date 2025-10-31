@@ -23,8 +23,17 @@
 
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Cédula *</label>
-                    <input type="text" wire:model="document_number" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition" placeholder="1234567890">
-                    @error('document_number') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <input type="text" wire:model.blur="document_number" class="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition" placeholder="1234567890">
+                    @error('document_number') 
+                        <div class="mt-2 p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-yellow-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-yellow-700 text-sm font-medium">{{ $message }}</span>
+                            </div>
+                        </div>
+                    @enderror
                 </div>
 
                 <div>
@@ -58,7 +67,7 @@
             @error('recaptcha') <span class="text-red-500 text-sm text-center block">{{ $message }}</span> @enderror
 
             <button type="submit" class="w-full py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-lg font-bold rounded-xl hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition shadow-lg">
-                🚀 Solicita tu Crédito Ahora
+                🚀 Solicita tu moto ahora
             </button>
         </form>
 

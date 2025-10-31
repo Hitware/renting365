@@ -28,13 +28,23 @@ class CreditApplicationForm extends Component
     protected $messages = [
         'full_name.required' => 'El nombre completo es obligatorio',
         'document_number.required' => 'La cédula es obligatoria',
-        'document_number.unique' => 'Ya existe una solicitud con esta cédula',
+        'document_number.unique' => 'Ya tenemos tu información registrada. Un asesor se contactará contigo pronto.',
         'phone.required' => 'El teléfono es obligatorio',
         'email.required' => 'El correo electrónico es obligatorio',
         'email.email' => 'Ingresa un correo válido',
         'city.required' => 'La ciudad es obligatoria',
         'recaptcha.required' => 'Por favor verifica que no eres un robot',
     ];
+
+    public function updatedDocumentNumber($value)
+    {
+        if (strlen($value) >= 6) {
+            $exists = CreditApplication::where('document_number', $value)->exists();
+            if ($exists) {
+                $this->addError('document_number', 'Ya tenemos tu información registrada. Un asesor se contactará contigo pronto.');
+            }
+        }
+    }
 
     public function submit()
     {

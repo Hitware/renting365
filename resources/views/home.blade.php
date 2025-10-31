@@ -95,7 +95,7 @@
                     <h3 class="text-2xl font-bold text-center mb-2">Plan Delivery</h3>
                     <p class="text-center text-gray-600 mb-3">Para Trabajadores</p>
                     <p class="text-center text-gray-700 mb-4">Perfectas para trabajar en apps como Rappi, Uber Eats y Domicilios.com. En <strong>Renting365</strong> ofrecen excelente rendimiento en ciudad.</p>
-                    <a href="#motos" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Motos</a>
+                    <a href="#financiamiento" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Planes</a>
                 </div>
 
                 <!-- Plan Universitario -->
@@ -105,7 +105,7 @@
                     <h3 class="text-2xl font-bold text-center mb-2">Plan Universitario</h3>
                     <p class="text-center text-gray-600 mb-3">Para Estudiantes</p>
                     <p class="text-center text-gray-700 mb-4">Ideales para la vida universitaria y moverte ligero por la ciudad. En <strong>Renting365</strong> es simple, claro y cercano.</p>
-                    <a href="#motos" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Motos</a>
+                    <a href="#financiamiento" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Planes</a>
                 </div>
 
                 <!-- Plan Emprendedor -->
@@ -115,7 +115,7 @@
                     <h3 class="text-2xl font-bold text-center mb-2">Plan Emprendedor</h3>
                     <p class="text-center text-gray-600 mb-3">Para Empresarios</p>
                     <p class="text-center text-gray-700 mb-4">Hechas para potenciar tu oficio y crecer con confianza. En <strong>Renting365</strong> empiezas fácil, con apoyo real cuando importa.</p>
-                    <a href="#motos" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Motos</a>
+                    <a href="#financiamiento" class="block w-full px-6 py-3 bg-orange-600 text-white text-center rounded-full hover:bg-orange-700">Ver Planes</a>
                 </div>
             </div>
 
@@ -644,6 +644,42 @@
 
     
 
+    <!-- Convocatoria Widget -->
+    <div id="convocatoria-widget" class="fixed bottom-24 sm:bottom-28 left-4 sm:left-8 z-50 max-w-xs">
+        <div class="bg-gradient-to-r from-orange-600 to-orange-500 rounded-2xl shadow-2xl p-4 animate-bounce-slow">
+            <button id="close-convocatoria" class="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full shadow-lg flex items-center justify-center text-orange-600 hover:bg-gray-100 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="flex items-start gap-3">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center animate-pulse">
+                        <span class="text-2xl">🏍️</span>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse">NUEVO</span>
+                        <span class="text-white text-xs font-semibold">¡CONVOCATORIA ABIERTA!</span>
+                    </div>
+                    <h4 class="text-white font-bold text-sm mb-2">Primeras 10 Motos Disponibles</h4>
+                    <p class="text-white text-xs mb-2 opacity-90">Sé parte de los primeros en Cartagena. ¡Cupos limitados!</p>
+                    <div class="flex items-center gap-1 mb-3">
+                        <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-white text-xs font-semibold">Cierre de convocatoria: 10 de Noviembre</span>
+                    </div>
+                    <a href="#financiamiento" class="block w-full bg-white text-orange-600 text-center text-sm font-bold py-2 px-4 rounded-full hover:bg-gray-100 transition shadow-lg">
+                        ¡Quiero mi Moto! 🚀
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Chatbot Widget -->
     <div id="chatbot-widget" class="fixed bottom-6 sm:bottom-8 right-4 sm:right-8 z-50">
         <button id="chatbot-toggle" class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-600 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-orange-700 transition">
@@ -683,7 +719,43 @@
         </div>
     </div>
 
+    <style>
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+        #convocatoria-widget {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #convocatoria-widget.hidden {
+            opacity: 0;
+            transform: translateX(-100%);
+            pointer-events: none;
+        }
+    </style>
+
     <script>
+        // Convocatoria Widget
+        const convocatoriaWidget = document.getElementById('convocatoria-widget');
+        const closeConvocatoria = document.getElementById('close-convocatoria');
+        
+        closeConvocatoria.addEventListener('click', (e) => {
+            e.preventDefault();
+            convocatoriaWidget.classList.add('hidden');
+        });
+        
+        // Cerrar al hacer clic en el botón de acción
+        convocatoriaWidget.querySelector('a').addEventListener('click', () => {
+            setTimeout(() => {
+                convocatoriaWidget.classList.add('hidden');
+                sessionStorage.setItem('convocatoriaClosed', 'true');
+            }, 500);
+        });
+
+        // Chatbot
         const sessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         const toggle = document.getElementById('chatbot-toggle');
         const closeBtn = document.getElementById('chatbot-close');
