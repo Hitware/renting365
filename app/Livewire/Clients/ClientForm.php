@@ -11,7 +11,7 @@ class ClientForm extends Component
     public ?Client $client = null;
     public $isEditing = false;
     public $currentStep = 1;
-    public $totalSteps = 6;
+    public $totalSteps = 5;
 
     public $document_type = 'CC';
     public $document_number = '';
@@ -30,41 +30,109 @@ class ClientForm extends Component
     public $neighborhood = '';
     public $city = '';
     public $department = '';
+    public $birth_department = '';
+    public $birth_city = '';
     public $phone_mobile = '';
     public $phone_landline = '';
     public $email = '';
-
-    public $employment_type = '';
-    public $employer_name = '';
-    public $employer_nit = '';
-    public $position = '';
-    public $monthly_salary = '';
-    public $start_date = '';
+    
+    public $colombianDepartments = [];
+    public $birthCities = [];
+    public $residenceCities = [];
 
     public $total_income = '';
     public $total_expenses = '';
-    public $rent_expense = 0;
-    public $utilities_expense = 0;
-    public $food_expense = 0;
+    public $rent_expense = '';
+    public $utilities_expense = '';
+    public $food_expense = '';
 
     public $references = [];
 
     public $consent_data_treatment = false;
     public $consent_credit_query = false;
 
-    public function mount(?Client $client = null)
+    public function mount(?Client $client = null, $application = null)
     {
+        $this->loadColombianLocations();
+        
         if ($client && $client->exists) {
             $this->isEditing = true;
             $this->client = $client;
             $this->loadClientData();
         } else {
+            if ($application) {
+                $this->loadFromApplication($application);
+            }
             $this->references = [
                 ['type' => 'personal', 'name' => '', 'phone' => '', 'relationship' => ''],
                 ['type' => 'personal', 'name' => '', 'phone' => '', 'relationship' => ''],
                 ['type' => 'familiar', 'name' => '', 'phone' => '', 'relationship' => '']
             ];
         }
+    }
+
+    private function loadFromApplication($application)
+    {
+        $nameParts = explode(' ', $application->full_name);
+        $this->first_name = $nameParts[0] ?? '';
+        $this->last_name = $nameParts[count($nameParts) - 1] ?? '';
+        if (count($nameParts) > 2) {
+            $this->middle_name = $nameParts[1] ?? '';
+        }
+        $this->document_number = $application->document_number;
+        $this->phone_mobile = $application->phone;
+        $this->email = $application->email;
+        $this->city = $application->city;
+    }
+    
+    private function loadColombianLocations()
+    {
+        $this->colombianDepartments = [
+            'Amazonas' => ['Leticia', 'Puerto Nariño'],
+            'Antioquia' => ['Medellín', 'Bello', 'Itagüí', 'Envigado', 'Apartadó', 'Turbo', 'Rionegro'],
+            'Arauca' => ['Arauca', 'Arauquita', 'Saravena'],
+            'Atlántico' => ['Barranquilla', 'Soledad', 'Malambo', 'Sabanalarga', 'Puerto Colombia'],
+            'Bolívar' => ['Cartagena', 'Magangué', 'Turbaco', 'Arjona', 'El Carmen de Bolívar'],
+            'Boyacá' => ['Tunja', 'Duitama', 'Sogamoso', 'Chiquinquirá', 'Paipa'],
+            'Caldas' => ['Manizales', 'Villamaría', 'Chinchiná', 'La Dorada'],
+            'Caquetá' => ['Florencia', 'San Vicente del Caguán', 'Puerto Rico'],
+            'Casanare' => ['Yopal', 'Aguazul', 'Villanueva', 'Monterrey'],
+            'Cauca' => ['Popayán', 'Santander de Quilichao', 'Puerto Tejada'],
+            'Cesar' => ['Valledupar', 'Aguachica', 'Bosconia', 'Codazzi'],
+            'Chocó' => ['Quibdó', 'Istmina', 'Condoto'],
+            'Córdoba' => ['Montería', 'Cereté', 'Lorica', 'Sahagún'],
+            'Cundinamarca' => ['Bogotá', 'Soacha', 'Facatativá', 'Zipaquirá', 'Chía', 'Fusagasugá', 'Girardot'],
+            'Guainía' => ['Inírida'],
+            'Guaviare' => ['San José del Guaviare'],
+            'Huila' => ['Neiva', 'Pitalito', 'Garzón', 'La Plata'],
+            'La Guajira' => ['Riohacha', 'Maicao', 'Uribia', 'Manaure'],
+            'Magdalena' => ['Santa Marta', 'Ciénaga', 'Fundación', 'El Banco'],
+            'Meta' => ['Villavicencio', 'Acacías', 'Granada', 'Puerto López'],
+            'Nariño' => ['Pasto', 'Tumaco', 'Ipiales', 'Túquerres'],
+            'Norte de Santander' => ['Cúcuta', 'Ocaña', 'Pamplona', 'Villa del Rosario'],
+            'Putumayo' => ['Mocoa', 'Puerto Asís', 'Orito'],
+            'Quindío' => ['Armenia', 'Calarcá', 'La Tebaida', 'Montenegro'],
+            'Risaralda' => ['Pereira', 'Dosquebradas', 'Santa Rosa de Cabal', 'La Virginia'],
+            'San Andrés y Providencia' => ['San Andrés', 'Providencia'],
+            'Santander' => ['Bucaramanga', 'Floridablanca', 'Girón', 'Piedecuesta', 'Barrancabermeja'],
+            'Sucre' => ['Sincelejo', 'Corozal', 'Sampués'],
+            'Tolima' => ['Ibagué', 'Espinal', 'Melgar', 'Honda'],
+            'Valle del Cauca' => ['Cali', 'Palmira', 'Buenaventura', 'Tuluá', 'Cartago', 'Buga'],
+            'Vaupés' => ['Mitú'],
+            'Vichada' => ['Puerto Carreño']
+        ];
+    }
+    
+    public function updatedBirthDepartment($value)
+    {
+        $this->birthCities = $this->colombianDepartments[$value] ?? [];
+        $this->birth_city = '';
+    }
+    
+    public function updatedDepartment($value)
+    {
+        $this->residenceCities = $this->colombianDepartments[$value] ?? [];
+        $this->city = '';
     }
 
     private function loadClientData()
@@ -77,6 +145,19 @@ class ClientForm extends Component
         $this->second_last_name = $this->client->second_last_name;
         $this->birth_date = $this->client->birth_date->format('Y-m-d');
         $this->birth_place = $this->client->birth_place;
+        
+        if ($this->birth_place) {
+            if (str_contains($this->birth_place, ',')) {
+                [$city, $dept] = explode(',', $this->birth_place, 2);
+                $this->birth_city = trim($city);
+                $this->birth_department = trim($dept);
+            } else {
+                $this->birth_city = $this->birth_place;
+            }
+            if ($this->birth_department) {
+                $this->birthCities = $this->colombianDepartments[$this->birth_department] ?? [];
+            }
+        }
         $this->gender = $this->client->gender;
         $this->marital_status = $this->client->marital_status;
         $this->education_level = $this->client->education_level;
@@ -88,28 +169,19 @@ class ClientForm extends Component
             $this->neighborhood = $contact->neighborhood;
             $this->city = $contact->city;
             $this->department = $contact->department;
+            $this->residenceCities = $this->colombianDepartments[$this->department] ?? [];
             $this->phone_mobile = $contact->phone_mobile;
             $this->phone_landline = $contact->phone_landline;
             $this->email = $contact->email;
         }
 
-        $employment = $this->client->currentEmployment;
-        if ($employment) {
-            $this->employment_type = $employment->employment_type;
-            $this->employer_name = $employment->employer_name;
-            $this->employer_nit = $employment->employer_nit;
-            $this->position = $employment->position;
-            $this->monthly_salary = $employment->monthly_salary;
-            $this->start_date = $employment->start_date->format('Y-m-d');
-        }
-
         $financial = $this->client->latestFinancial;
         if ($financial) {
-            $this->total_income = $financial->total_income;
-            $this->total_expenses = $financial->total_expenses;
-            $this->rent_expense = $financial->rent_expense;
-            $this->utilities_expense = $financial->utilities_expense;
-            $this->food_expense = $financial->food_expense;
+            $this->total_income = number_format($financial->total_income, 0, ',', '.');
+            $this->total_expenses = number_format($financial->total_expenses, 0, ',', '.');
+            $this->rent_expense = $financial->rent_expense ? number_format($financial->rent_expense, 0, ',', '.') : '';
+            $this->utilities_expense = $financial->utilities_expense ? number_format($financial->utilities_expense, 0, ',', '.') : '';
+            $this->food_expense = $financial->food_expense ? number_format($financial->food_expense, 0, ',', '.') : '';
         }
 
         $references = $this->client->references;
@@ -136,10 +208,30 @@ class ClientForm extends Component
 
     public function nextStep()
     {
+        // Limpiar campos monetarios antes de validar paso 3
+        if ($this->currentStep == 3) {
+            $this->cleanMoneyFields();
+        }
+        
         $this->validate($this->getStepRules($this->currentStep));
         
         if ($this->currentStep < $this->totalSteps) {
             $this->currentStep++;
+        }
+    }
+    
+    private function cleanMoneyFields()
+    {
+        // Remover formato de moneda y validar que sean números
+        $this->total_income = preg_replace('/[^0-9]/', '', $this->total_income);
+        $this->total_expenses = preg_replace('/[^0-9]/', '', $this->total_expenses);
+        $this->rent_expense = preg_replace('/[^0-9]/', '', $this->rent_expense);
+        $this->utilities_expense = preg_replace('/[^0-9]/', '', $this->utilities_expense);
+        $this->food_expense = preg_replace('/[^0-9]/', '', $this->food_expense);
+        
+        // Validar mínimo de ingresos
+        if ((int)$this->total_income < 1300000) {
+            $this->addError('total_income', 'Los ingresos totales deben ser mínimo $1.300.000');
         }
     }
 
@@ -160,36 +252,33 @@ class ClientForm extends Component
             1 => [
                 'document_type' => 'required|in:CC,CE,TI,PP',
                 'document_number' => $documentRule,
-                'first_name' => 'required|string|min:2|max:100',
-                'last_name' => 'required|string|min:2|max:100',
+                'first_name' => 'required|string|min:2|max:100|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/',
+                'middle_name' => 'nullable|string|max:100|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/',
+                'last_name' => 'required|string|min:2|max:100|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/',
+                'second_last_name' => 'nullable|string|max:100|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/',
                 'birth_date' => 'required|date',
                 'gender' => 'required|string',
                 'marital_status' => 'required|string',
                 'education_level' => 'required|string'
             ],
             2 => [
-                'address' => 'required|string|max:255',
-                'city' => 'required|string',
                 'department' => 'required|string',
-                'phone_mobile' => 'required|string',
+                'city' => 'required|string',
+                'address' => 'required|string|max:255',
+                'neighborhood' => 'required|string|max:100',
+                'phone_mobile' => 'required|string|regex:/^[0-9]{10}$/',
+                'phone_landline' => 'nullable|string|regex:/^[0-9]{7,10}$/',
                 'email' => 'required|email'
             ],
             3 => [
-                'employment_type' => 'required',
-                'employer_name' => 'required|string|max:255',
-                'position' => 'required|string|max:100',
-                'monthly_salary' => 'required|numeric|min:1300000',
-                'start_date' => 'required|date'
+                'total_income' => 'required|string',
+                'total_expenses' => 'required|string'
             ],
             4 => [
-                'total_income' => 'required|numeric|min:1300000',
-                'total_expenses' => 'required|numeric'
+                'references.*.name' => 'required|string|max:255|regex:/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/',
+                'references.*.phone' => 'required|string|regex:/^[0-9]{10}$/'
             ],
             5 => [
-                'references.*.name' => 'required|string|max:255',
-                'references.*.phone' => 'required|string'
-            ],
-            6 => [
                 'consent_data_treatment' => 'accepted',
                 'consent_credit_query' => 'accepted'
             ]
@@ -200,6 +289,9 @@ class ClientForm extends Component
 
     public function submit()
     {
+        // Limpiar campos monetarios antes de validar
+        $this->cleanMoneyFields();
+        
         foreach (range(1, $this->totalSteps) as $step) {
             $this->validate($this->getStepRules($step));
         }
@@ -214,7 +306,7 @@ class ClientForm extends Component
                 'second_last_name' => $this->second_last_name,
                 'full_name' => trim("{$this->first_name} {$this->middle_name} {$this->last_name} {$this->second_last_name}"),
                 'birth_date' => $this->birth_date,
-                'birth_place' => $this->birth_place,
+                'birth_place' => $this->birth_city && $this->birth_department ? "{$this->birth_city}, {$this->birth_department}" : $this->birth_place,
                 'gender' => $this->gender,
                 'marital_status' => $this->marital_status,
                 'education_level' => $this->education_level,
@@ -249,10 +341,10 @@ class ClientForm extends Component
 
             $contactData = [
                 'contact_type' => 'residencia',
+                'department' => $this->department,
+                'city' => $this->city,
                 'address' => $this->address,
                 'neighborhood' => $this->neighborhood,
-                'city' => $this->city,
-                'department' => $this->department,
                 'phone_mobile' => $this->phone_mobile,
                 'phone_landline' => $this->phone_landline,
                 'email' => $this->email,
@@ -268,32 +360,21 @@ class ClientForm extends Component
                 $client->contacts()->create($contactData);
             }
 
-            $employmentData = [
-                'is_current' => true,
-                'employment_type' => $this->employment_type,
-                'employer_name' => $this->employer_name,
-                'employer_nit' => $this->employer_nit,
-                'position' => $this->position,
-                'monthly_salary' => $this->monthly_salary,
-                'other_income' => 0,
-                'total_monthly_income' => $this->monthly_salary,
-                'start_date' => $this->start_date
-            ];
-
-            if ($this->isEditing) {
-                $client->employments()->where('is_current', true)->update(['is_current' => false]);
-            }
-            $client->employments()->create($employmentData);
+            $totalIncome = (float) str_replace(['.', ','], ['', '.'], $this->total_income);
+            $totalExpenses = (float) str_replace(['.', ','], ['', '.'], $this->total_expenses);
+            $rentExpense = $this->rent_expense ? (float) str_replace(['.', ','], ['', '.'], $this->rent_expense) : 0;
+            $utilitiesExpense = $this->utilities_expense ? (float) str_replace(['.', ','], ['', '.'], $this->utilities_expense) : 0;
+            $foodExpense = $this->food_expense ? (float) str_replace(['.', ','], ['', '.'], $this->food_expense) : 0;
 
             $financialData = [
                 'month_year' => now()->format('Y-m'),
-                'total_income' => $this->total_income,
-                'salary_income' => $this->monthly_salary,
-                'total_expenses' => $this->total_expenses,
-                'rent_expense' => $this->rent_expense,
-                'utilities_expense' => $this->utilities_expense,
-                'food_expense' => $this->food_expense,
-                'disposable_income' => $this->total_income - $this->total_expenses
+                'total_income' => $totalIncome,
+                'salary_income' => $totalIncome,
+                'total_expenses' => $totalExpenses,
+                'rent_expense' => $rentExpense,
+                'utilities_expense' => $utilitiesExpense,
+                'food_expense' => $foodExpense,
+                'disposable_income' => $totalIncome - $totalExpenses
             ];
 
             if ($this->isEditing) {

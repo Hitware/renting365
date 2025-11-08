@@ -2,35 +2,36 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Traits\HasHashedRouteKey;
 
 class Motorcycle extends Model
 {
-    use HasHashedRouteKey;
+    use HasFactory, HasHashedRouteKey;
 
     protected $fillable = [
         'brand',
         'model',
         'year',
+        'displacement',
         'plate',
-        'vin',
+        'motor_number',
+        'chassis_number',
         'color',
-        'engine_capacity',
-        'purchase_price',
-        'current_value',
         'status',
-        'mileage',
-        'notes'
+        'current_owner_id',
+        'purchase_price',
+        'purchase_date',
+        'notes',
+        'created_by',
+        'updated_by'
     ];
 
     protected $casts = [
-        'year' => 'integer',
-        'engine_capacity' => 'integer',
-        'mileage' => 'integer',
         'purchase_price' => 'decimal:2',
-        'current_value' => 'decimal:2'
+        'purchase_date' => 'date'
     ];
 
     public function leasingContracts(): HasMany

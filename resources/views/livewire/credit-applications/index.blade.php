@@ -50,7 +50,7 @@
     </div>
 
     <!-- Table -->
-    <div class="bg-white rounded-lg shadow overflow-hidden">
+    <div class="bg-white rounded-lg shadow overflow-x-auto">
         <table class="min-w-full">
             <thead class="bg-gray-50">
                 <tr>
@@ -81,7 +81,10 @@
                     <td class="px-6 py-4 whitespace-nowrap">{{ $app->assignedAdvisor->name ?? 'Sin asignar' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $app->created_at->format('d/m/Y') }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <button wire:click="edit({{ $app->id }})" class="text-blue-600 hover:text-blue-900">Editar</button>
+                        <div class="flex space-x-3">
+                            <button wire:click="edit({{ $app->id }})" class="text-blue-600 hover:text-blue-900">Editar</button>
+                            <a href="{{ route('clients.create-from-application', $app->id) }}" class="text-green-600 hover:text-green-900">Crear Cliente</a>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

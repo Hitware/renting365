@@ -22,7 +22,7 @@
                 <div class="hidden md:flex items-center space-x-6 text-sm text-gray-600">
                     <div class="flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        +57 314 5144067
+                        +57 310 5367376
                     </div>
                     <div class="flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -56,7 +56,7 @@
                         <span class="text-orange-600">Facilita tu vida</span>
                     </h1>
                     <p class="text-xl text-gray-700 leading-relaxed">
-                        Genera ingresos extras y mejora tu movilidad con nuestro servicio de renting de motos. Sin cuota inicial, con mantenimiento incluido y seguro completo.
+                        Genera ingresos extras y mejora tu movilidad con nuestro servicio de renting de motos. La moto a tu nombre desde el día 1, con mantenimiento incluido y seguro completo.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#planes" class="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full text-center transition shadow-lg">Ver Planes Disponibles</a>
@@ -76,62 +76,29 @@
     <section id="planes" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Nuestros Planes</h2>
-                <p class="text-xl text-gray-600">Elige el plan que mejor se adapte a tus necesidades</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Nuestro Plan</h2>
+                <p class="text-xl text-gray-600">Un plan flexible que se adapta a todos</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Plan Delivery -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-transparent hover:border-orange-500 transition">
-                    <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-orange-600 rounded-full flex items-center justify-center">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2 text-gray-900">Plan Delivery</h3>
-                        <div class="text-4xl font-bold my-4 text-orange-600">$350.000<span class="text-base text-gray-600">/mes</span></div>
-                        <ul class="text-left space-y-3 mb-8">
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Ideal para delivery y mensajería</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sin cuota inicial</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Mantenimiento incluido</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>SOAT y seguros incluidos</span></li>
-                        </ul>
-                        <a href="#contacto" class="block w-full px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full text-center transition">Solicitar Plan</a>
-                    </div>
-                </div>
-
-                <!-- Plan Universitario -->
+            <div class="flex justify-center">
+                <!-- Plan Único -->
                 <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-orange-500 transform md:scale-105 relative">
-                    <div class="absolute top-0 right-0 bg-orange-600 text-white px-4 py-1 rounded-bl-lg text-sm font-semibold">Más Popular</div>
+                    <div class="absolute top-0 right-0 bg-orange-600 text-white px-4 py-1 rounded-bl-lg text-sm font-semibold">Plan Único</div>
                     <div class="text-center">
                         <div class="w-20 h-20 mx-auto mb-6 bg-orange-600 rounded-full flex items-center justify-center">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-2 text-gray-900">Plan Universitario</h3>
-                        <div class="text-4xl font-bold my-4 text-orange-600">$280.000<span class="text-base text-gray-600">/mes</span></div>
+                        <h3 class="text-2xl font-bold mb-2 text-gray-900">Renting365</h3>
+                        <div class="text-4xl font-bold my-4 text-orange-600">$35.000<span class="text-base text-gray-600">/día</span></div>
+                        <p class="text-sm text-gray-500 mb-4">AUTECO TVS Sport 100</p>
                         <ul class="text-left space-y-3 mb-8">
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Especial para estudiantes</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sin cuota inicial</span></li>
+                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Ideal para delivery, estudiantes y emprendedores</span></li>
+                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Moto a tu nombre desde el día 1</span></li>
                             <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Mantenimiento incluido</span></li>
                             <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>SOAT y seguros incluidos</span></li>
+                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Fondo de Siniestralidad</span></li>
+                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Escuela Renting365 incluida</span></li>
                         </ul>
-                        <a href="#contacto" class="block w-full px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full text-center transition">Solicitar Plan</a>
-                    </div>
-                </div>
-
-                <!-- Plan Emprendedor -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-transparent hover:border-orange-500 transition">
-                    <div class="text-center">
-                        <div class="w-20 h-20 mx-auto mb-6 bg-orange-600 rounded-full flex items-center justify-center">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2 text-gray-900">Plan Emprendedor</h3>
-                        <div class="text-4xl font-bold my-4 text-orange-600">$400.000<span class="text-base text-gray-600">/mes</span></div>
-                        <ul class="text-left space-y-3 mb-8">
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Para negocios y emprendimientos</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Sin cuota inicial</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Mantenimiento incluido</span></li>
-                            <li class="flex items-start"><svg class="w-6 h-6 mr-2 text-orange-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>SOAT y seguros incluidos</span></li>
-                        </ul>
-                        <a href="#contacto" class="block w-full px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full text-center transition">Solicitar Plan</a>
+                        <a href="#contacto" class="block w-full px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-full text-center transition">Solicitar Información</a>
                     </div>
                 </div>
             </div>
@@ -165,7 +132,21 @@
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Fondo de Siniestralidad</h3>
-                    <p class="text-gray-600">Protección ante imprevistos y siniestros durante el contrato</p>
+                    <p class="text-gray-600">Cubre tus cuotas si quedas incapacitado temporalmente por accidente</p>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-orange-600 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Escuela Renting365</h3>
+                    <p class="text-gray-600">Formación obligatoria incluida: Psicología, Seguridad Vial, Finanzas y más</p>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-orange-600 rounded-full flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Propiedad a tu Nombre</h3>
+                    <p class="text-gray-600">La moto se matricula a tu nombre desde el día 1, al finalizar es 100% tuya</p>
                 </div>
             </div>
         </div>
@@ -178,7 +159,7 @@
             <p class="text-xl mb-8 max-w-2xl mx-auto">Únete a cientos de personas que ya están generando ingresos y mejorando su movilidad con Renting365</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#planes" class="px-8 py-4 bg-white text-orange-600 hover:bg-gray-100 rounded-full font-semibold text-center transition">Ver Todos los Planes</a>
-                <a href="https://wa.me/573145144067" class="px-8 py-4 border-2 border-white hover:bg-white/10 rounded-full font-semibold text-center transition">Contactar por WhatsApp</a>
+                <a href="https://wa.me/573105367376" class="px-8 py-4 border-2 border-white hover:bg-white/10 rounded-full font-semibold text-center transition">Contactar por WhatsApp</a>
             </div>
         </div>
     </section>
@@ -202,7 +183,7 @@
                 <div>
                     <h4 class="font-semibold mb-4">Contacto</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>+57 314 5144067</li>
+                        <li>+57 310 5367376</li>
                         <li>Cartagena, Colombia</li>
                     </ul>
                 </div>

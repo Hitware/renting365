@@ -93,9 +93,7 @@ Route::middleware([
     'verified',
     'throttle:120,1',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     // User Management Routes
     Route::resource('users', UserController::class)->middleware('can:users.view');
@@ -105,6 +103,9 @@ Route::middleware([
 
     // Client Management Routes (Hoja de Vida de Persona)
     Route::resource('clients', ClientController::class)->middleware('can:clients.view');
+    Route::get('clients/create-from-application/{application}', [ClientController::class, 'createFromApplication'])
+        ->name('clients.create-from-application')
+        ->middleware('can:clients.view');
     Route::get('client-documents/{document}/view', [\App\Http\Controllers\ClientDocumentController::class, 'view'])
         ->name('client.document.view')
         ->middleware('can:clients.view');
@@ -115,14 +116,38 @@ Route::middleware([
         ->middleware('can:clients.view');
 
     // Leasing Contract Routes
-    Route::resource('leasing-contracts', \App\Http\Controllers\LeasingContractController::class)->middleware('can:clients.view');
+    Route::resource('leasing-contracts', \App\Http\Controllers\LeasingContractController::class);
     Route::get('leasing-contracts/{leasingContract}/contract-pdf', [\App\Http\Controllers\LeasingContractController::class, 'viewContract'])
-        ->name('leasing.contract.view')
-        ->middleware('can:clients.view');
+        ->name('leasing.contract.view');
     Route::get('leasing-contracts/{leasingContract}/print-schedule', [\App\Http\Controllers\LeasingContractController::class, 'printPaymentSchedule'])
-        ->name('leasing.print.schedule')
-        ->middleware('can:clients.view');
+        ->name('leasing.print.schedule');
     Route::get('leasing-contracts/{leasingContract}/print-contract', [\App\Http\Controllers\LeasingContractController::class, 'printContract'])
-        ->name('leasing.print.contract')
-        ->middleware('can:clients.view');
+        ->name('leasing.print.contract');
+
+    // Payment Routes
+    Route::prefix('payments')->name('payments.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\PaymentController::class, 'index'])
+            ->name('index');
+        Route::get('/create', [\App\Http\Controllers\PaymentController::class, 'create'])
+            ->name('create')
+            ->middleware('can:payments.create');
+        Route::get('/today', [\App\Http\Controllers\PaymentController::class, 'today'])
+            ->name('today');
+        Route::get('/overdue', [\App\Http\Controllers\PaymentController::class, 'overdue'])
+            ->name('overdue');
+        Route::get('/upcoming', [\App\Http\Controllers\PaymentController::class, 'upcoming'])
+            ->name('upcoming');
+        Route::get('/history', [\App\Http\Controllers\PaymentController::class, 'history'])
+            ->name('history');
+        Route::get('/{payment}', [\App\Http\Controllers\PaymentController::class, 'show'])
+            ->name('show');
+    });
+
+    // Client Account Statement Routes
+    Route::get('/my-account', [\App\Http\Controllers\ClientAccountController::class, 'index'])
+        ->name('client.account')
+        ->middleware('can:account.view-own');
+    Route::get('/client/{client}/account', [\App\Http\Controllers\ClientAccountController::class, 'show'])
+        ->name('client.account.show')
+        ->middleware('can:account.view');
 });

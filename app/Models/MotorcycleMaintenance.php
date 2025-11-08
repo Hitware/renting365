@@ -8,24 +8,31 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MotorcycleMaintenance extends Model
 {
     protected $fillable = [
-        'leasing_contract_id',
         'motorcycle_id',
-        'maintenance_type',
+        'leasing_contract_id',
+        'type',
+        'title',
+        'description',
         'scheduled_date',
         'completed_date',
-        'current_mileage',
         'status',
-        'description',
-        'work_performed',
-        'cost',
-        'invoice_number',
-        'performed_by'
+        'workshop_name',
+        'technician_name',
+        'estimated_cost',
+        'actual_cost',
+        'mileage_km',
+        'next_maintenance_date',
+        'next_maintenance_km',
+        'notes',
+        'registered_by'
     ];
 
     protected $casts = [
         'scheduled_date' => 'date',
         'completed_date' => 'date',
-        'cost' => 'decimal:2'
+        'next_maintenance_date' => 'date',
+        'estimated_cost' => 'decimal:2',
+        'actual_cost' => 'decimal:2'
     ];
 
     public function contract(): BelongsTo
@@ -38,18 +45,18 @@ class MotorcycleMaintenance extends Model
         return $this->belongsTo(Motorcycle::class);
     }
 
-    public function performer(): BelongsTo
+    public function registeredBy(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'performed_by');
+        return $this->belongsTo(User::class, 'registered_by');
     }
 
     public function getStatusBadgeColorAttribute(): string
     {
         return match($this->status) {
-            'programado' => 'bg-blue-100 text-blue-800',
-            'completado' => 'bg-green-100 text-green-800',
-            'cancelado' => 'bg-gray-100 text-gray-800',
-            'vencido' => 'bg-red-100 text-red-800',
+            'pending' => 'bg-yellow-100 text-yellow-800',
+            'in_progress' => 'bg-blue-100 text-blue-800',
+            'completed' => 'bg-green-100 text-green-800',
+            'cancelled' => 'bg-gray-100 text-gray-800',
             default => 'bg-gray-100 text-gray-800'
         };
     }

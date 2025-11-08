@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LeasingPayment extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'leasing_contract_id',
         'payment_number',
@@ -16,6 +18,13 @@ class LeasingPayment extends Model
         'interest',
         'balance',
         'status',
+        'paid_at',
+        'amount_paid',
+        'payment_method',
+        'reference_number',
+        'received_by',
+        'notes',
+        // Legacy fields
         'paid_amount',
         'paid_date',
         'payment_reference',
@@ -25,11 +34,13 @@ class LeasingPayment extends Model
 
     protected $casts = [
         'due_date' => 'date',
+        'paid_at' => 'datetime',
         'paid_date' => 'date',
         'amount' => 'decimal:2',
         'principal' => 'decimal:2',
         'interest' => 'decimal:2',
         'balance' => 'decimal:2',
+        'amount_paid' => 'decimal:2',
         'paid_amount' => 'decimal:2'
     ];
 
@@ -41,6 +52,11 @@ class LeasingPayment extends Model
     public function processor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'processed_by');
+    }
+
+    public function receivedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'received_by');
     }
 
     public function getStatusBadgeColorAttribute(): string

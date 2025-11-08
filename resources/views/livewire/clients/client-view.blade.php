@@ -24,27 +24,24 @@
     <div class="bg-white rounded-xl shadow-md overflow-hidden">
         <div class="border-b border-gray-200">
             <nav class="flex -mb-px">
-                <button wire:click="setActiveTab('personal')" 
+                <button wire:click.prevent="setActiveTab('personal')" type="button"
                         class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'personal' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     📝 Personal
                 </button>
-                <button wire:click="setActiveTab('laboral')" 
-                        class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'laboral' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
-                    💼 Laboral
-                </button>
-                <button wire:click="setActiveTab('financiero')" 
+
+                <button wire:click.prevent="setActiveTab('financiero')" type="button"
                         class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'financiero' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     💰 Financiero
                 </button>
-                <button wire:click="setActiveTab('referencias')" 
+                <button wire:click.prevent="setActiveTab('referencias')" type="button"
                         class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'referencias' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     📞 Referencias
                 </button>
-                <button wire:click="setActiveTab('creditos')" 
+                <button wire:click.prevent="setActiveTab('creditos')" type="button"
                         class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'creditos' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
-                    💳 Créditos
+                    🏍️ Motos
                 </button>
-                <button wire:click="setActiveTab('documentos')" 
+                <button wire:click.prevent="setActiveTab('documentos')" type="button"
                         class="px-6 py-4 text-sm font-medium border-b-2 {{ $activeTab === 'documentos' ? 'border-orange-500 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}">
                     📄 Documentos
                 </button>
@@ -109,45 +106,7 @@
             </div>
             @endif
 
-            <!-- Tab: Laboral -->
-            @if($activeTab === 'laboral')
-            <div class="space-y-6">
-                @if($client->currentEmployment)
-                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-bold text-gray-900">Empleo Actual</h3>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">Activo</span>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <p class="text-sm text-gray-500">Empleador</p>
-                            <p class="text-base font-medium text-gray-900">{{ $client->currentEmployment->employer_name }}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Cargo</p>
-                            <p class="text-base font-medium text-gray-900">{{ $client->currentEmployment->position }}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Tipo de Empleo</p>
-                            <p class="text-base font-medium text-gray-900">{{ ucfirst(str_replace('_', ' ', $client->currentEmployment->employment_type)) }}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Antigüedad</p>
-                            <p class="text-base font-medium text-gray-900">{{ $client->currentEmployment->start_date->diffForHumans() }}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Salario Mensual</p>
-                            <p class="text-base font-medium text-gray-900">${{ number_format($client->currentEmployment->monthly_salary, 0, ',', '.') }}</p>
-                        </div>
-                    </div>
-                </div>
-                @else
-                <div class="text-center py-8 text-gray-500">
-                    <p>No hay información laboral registrada</p>
-                </div>
-                @endif
-            </div>
-            @endif
+
 
             <!-- Tab: Financiero -->
             @if($activeTab === 'financiero')
@@ -226,7 +185,7 @@
             </div>
             @endif
 
-            <!-- Tab: Créditos -->
+            <!-- Tab: Motos -->
             @if($activeTab === 'creditos')
             <div class="space-y-6">
                 <!-- Botón para asignar contrato de leasing -->
@@ -237,7 +196,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                         </svg>
-                        Asignar Contrato de Leasing
+                        Asignar Contrato
                     </a>
                 </div>
                 @endcan

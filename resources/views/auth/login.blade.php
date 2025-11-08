@@ -4,15 +4,9 @@
         <!-- Header -->
         <div class="text-center">
             <div class="flex justify-center mb-6">
-                <div class="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center shadow-lg">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                </div>
+                <img src="{{ asset('images/home/logo_renting.png') }}" alt="Renting365" class="h-16">
             </div>
-            <h2 class="text-4xl font-bold text-gray-900">
-                Bienvenido a Renting365
-            </h2>
+            
             <p class="mt-2 text-sm text-gray-600">
                 Inicia sesión para acceder a tu cuenta
             </p>

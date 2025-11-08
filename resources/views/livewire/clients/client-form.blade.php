@@ -20,7 +20,7 @@
                             @endif
                         </div>
                         <div class="absolute top-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-xs text-white font-medium">
-                            {{ ['Personal', 'Contacto', 'Laboral', 'Financiero', 'Referencias', 'Consentimientos'][$i-1] }}
+                            {{ ['Personal', 'Contacto', 'Financiero', 'Referencias', 'Consentimientos'][$i-1] }}
                         </div>
                     </div>
                     @if($i < $totalSteps)
@@ -46,250 +46,256 @@
 
             <!-- Paso 1: Datos Personales -->
             @if($currentStep === 1)
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Información Personal</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Documento *</label>
-                        <select wire:model="document_type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                            <option value="CC">Cédula de Ciudadanía</option>
-                            <option value="CE">Cédula de Extranjería</option>
-                            <option value="TI">Tarjeta de Identidad</option>
-                            <option value="PP">Pasaporte</option>
-                        </select>
-                        @error('document_type') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Información Personal</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Documento *</label>
+                            <select wire:model="document_type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="TI">Tarjeta de Identidad</option>
+                                <option value="PP">Pasaporte</option>
+                            </select>
+                            @error('document_type') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Número de Documento *</label>
-                        <input type="text" wire:model="document_number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('document_number') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Número de Documento *</label>
+                            <input type="text" wire:model="document_number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('document_number') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Primer Nombre *</label>
-                        <input type="text" wire:model="first_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('first_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Primer Nombre *</label>
+                            <input type="text" wire:model="first_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('first_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Segundo Nombre</label>
-                        <input type="text" wire:model="middle_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Segundo Nombre</label>
+                            <input type="text" wire:model="middle_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Primer Apellido *</label>
-                        <input type="text" wire:model="last_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('last_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Primer Apellido *</label>
+                            <input type="text" wire:model="last_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('last_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Segundo Apellido</label>
-                        <input type="text" wire:model="second_last_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Segundo Apellido</label>
+                            <input type="text" wire:model="second_last_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de Nacimiento *</label>
-                        <input type="date" wire:model="birth_date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('birth_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de Nacimiento *</label>
+                            <input type="date" wire:model="birth_date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('birth_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Lugar de Nacimiento</label>
-                        <input type="text" wire:model="birth_place" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Género *</label>
+                            <select wire:model="gender" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="Otro">Otro</option>
+                                <option value="Prefiero no decir">Prefiero no decir</option>
+                            </select>
+                            @error('gender') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Género *</label>
-                        <select wire:model="gender" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="Otro">Otro</option>
-                            <option value="Prefiero no decir">Prefiero no decir</option>
-                        </select>
-                        @error('gender') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Estado Civil *</label>
+                            <select wire:model="marital_status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="">Seleccione...</option>
+                                <option value="soltero">Soltero(a)</option>
+                                <option value="casado">Casado(a)</option>
+                                <option value="union_libre">Unión Libre</option>
+                                <option value="divorciado">Divorciado(a)</option>
+                                <option value="viudo">Viudo(a)</option>
+                            </select>
+                            @error('marital_status') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Estado Civil *</label>
-                        <select wire:model="marital_status" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                            <option value="">Seleccione...</option>
-                            <option value="soltero">Soltero(a)</option>
-                            <option value="casado">Casado(a)</option>
-                            <option value="union_libre">Unión Libre</option>
-                            <option value="divorciado">Divorciado(a)</option>
-                            <option value="viudo">Viudo(a)</option>
-                        </select>
-                        @error('marital_status') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nivel Educativo *</label>
+                            <select wire:model="education_level" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="">Seleccione...</option>
+                                <option value="primaria">Primaria</option>
+                                <option value="secundaria">Secundaria</option>
+                                <option value="tecnico">Técnico</option>
+                                <option value="tecnologo">Tecnólogo</option>
+                                <option value="profesional">Profesional</option>
+                                <option value="posgrado">Posgrado</option>
+                            </select>
+                            @error('education_level') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nivel Educativo *</label>
-                        <select wire:model="education_level" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                            <option value="">Seleccione...</option>
-                            <option value="primaria">Primaria</option>
-                            <option value="secundaria">Secundaria</option>
-                            <option value="tecnico">Técnico</option>
-                            <option value="tecnologo">Tecnólogo</option>
-                            <option value="profesional">Profesional</option>
-                            <option value="posgrado">Posgrado</option>
-                        </select>
-                        @error('education_level') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Personas a Cargo</label>
+                            <input type="number" wire:model="dependents_count" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Personas a Cargo</label>
-                        <input type="number" wire:model="dependents_count" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Lugar de Nacimiento</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Departamento de Nacimiento</label>
+                            <select wire:model.live="birth_department" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="">Seleccione departamento</option>
+                                @foreach($colombianDepartments as $dept => $cities)
+                                    <option value="{{ $dept }}">{{ $dept }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ciudad de Nacimiento</label>
+                            <select wire:model="birth_city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 {{ empty($birthCities) ? 'bg-gray-100' : '' }}" {{ empty($birthCities) ? 'disabled' : '' }}>
+                                <option value="">{{ empty($birthCities) ? 'Primero seleccione departamento' : 'Seleccione ciudad' }}</option>
+                                @foreach($birthCities as $city)
+                                    <option value="{{ $city }}">{{ $city }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
             @endif
 
-            <!-- Paso 2: Contacto -->
+            <!-- Paso 2: Contacto y Residencia -->
             @if($currentStep === 2)
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Información de Contacto</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Dirección de Residencia *</label>
-                        <input type="text" wire:model="address" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Dirección de Residencia</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Departamento de Residencia *</label>
+                            <select wire:model.live="department" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                                <option value="">Seleccione departamento</option>
+                                @foreach($colombianDepartments as $dept => $cities)
+                                    <option value="{{ $dept }}">{{ $dept }}</option>
+                                @endforeach
+                            </select>
+                            @error('department') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Barrio</label>
-                        <input type="text" wire:model="neighborhood" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ciudad de Residencia *</label>
+                            <select wire:model="city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 {{ empty($residenceCities) ? 'bg-gray-100' : '' }}" {{ empty($residenceCities) ? 'disabled' : '' }}>
+                                <option value="">{{ empty($residenceCities) ? 'Primero seleccione departamento' : 'Seleccione ciudad' }}</option>
+                                @foreach($residenceCities as $city)
+                                    <option value="{{ $city }}">{{ $city }}</option>
+                                @endforeach
+                            </select>
+                            @error('city') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Ciudad *</label>
-                        <input type="text" wire:model="city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('city') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Dirección Completa *</label>
+                            <input type="text" wire:model="address" placeholder="Ej: Calle 10 # 20-30, Apto 501" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('address') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Departamento *</label>
-                        <input type="text" wire:model="department" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('department') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Barrio *</label>
+                            <input type="text" wire:model="neighborhood" placeholder="Nombre del barrio" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('neighborhood') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono Celular *</label>
-                        <input type="text" wire:model="phone_mobile" placeholder="+57 300 123 4567" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('phone_mobile') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Información de Contacto</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono Celular *</label>
+                            <input type="text" wire:model="phone_mobile" placeholder="+57 300 123 4567" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('phone_mobile') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono Fijo</label>
-                        <input type="text" wire:model="phone_landline" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Segundo Teléfono (Opcional)</label>
+                            <input type="text" wire:model="phone_landline" placeholder="+57 300 123 4567" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
 
-                    <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Correo Electrónico *</label>
-                        <input type="email" wire:model="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Correo Electrónico *</label>
+                            <input type="email" wire:model="email" placeholder="ejemplo@correo.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                            @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                        </div>
                     </div>
                 </div>
             </div>
             @endif
 
-            <!-- Paso 3: Información Laboral -->
+            <!-- Paso 3: Información Financiera -->
             @if($currentStep === 3)
-            <div class="space-y-6">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Información Laboral</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Empleo *</label>
-                        <select wire:model="employment_type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                            <option value="">Seleccione...</option>
-                            <option value="empleado_indefinido">Empleado Indefinido</option>
-                            <option value="empleado_temporal">Empleado Temporal</option>
-                            <option value="prestacion_servicios">Prestación de Servicios</option>
-                            <option value="independiente">Independiente</option>
-                            <option value="pensionado">Pensionado</option>
-                        </select>
-                        @error('employment_type') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nombre del Empleador *</label>
-                        <input type="text" wire:model="employer_name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('employer_name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">NIT del Empleador</label>
-                        <input type="text" wire:model="employer_nit" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Cargo *</label>
-                        <input type="text" wire:model="position" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('position') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Salario Mensual *</label>
-                        <input type="number" wire:model="monthly_salary" min="1300000" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('monthly_salary') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de Inicio *</label>
-                        <input type="date" wire:model="start_date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
-                        @error('start_date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                    </div>
-                </div>
-            </div>
-            @endif
-
-            <!-- Paso 4: Información Financiera -->
-            @if($currentStep === 4)
             <div class="space-y-6">
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Información Financiera</h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Ingresos Totales Mensuales *</label>
-                        <input type="number" wire:model="total_income" min="1300000" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-gray-500">$</span>
+                            <input type="text" wire:model="total_income" placeholder="1.300.000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" x-mask:dynamic="$money($input, ',', '.')">
+                        </div>
                         @error('total_income') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Egresos Totales Mensuales *</label>
-                        <input type="number" wire:model="total_expenses" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-gray-500">$</span>
+                            <input type="text" wire:model="total_expenses" placeholder="800.000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" x-mask:dynamic="$money($input, ',', '.')">
+                        </div>
                         @error('total_expenses') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Gasto en Arriendo</label>
-                        <input type="number" wire:model="rent_expense" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-gray-500">$</span>
+                            <input type="text" wire:model="rent_expense" placeholder="500.000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" x-mask:dynamic="$money($input, ',', '.')">
+                        </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Gasto en Servicios</label>
-                        <input type="number" wire:model="utilities_expense" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-gray-500">$</span>
+                            <input type="text" wire:model="utilities_expense" placeholder="150.000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" x-mask:dynamic="$money($input, ',', '.')">
+                        </div>
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Gasto en Alimentación</label>
-                        <input type="number" wire:model="food_expense" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500">
+                        <div class="relative">
+                            <span class="absolute left-3 top-2 text-gray-500">$</span>
+                            <input type="text" wire:model="food_expense" placeholder="300.000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500" x-mask:dynamic="$money($input, ',', '.')">
+                        </div>
                     </div>
 
                     @if($total_income && $total_expenses)
                     <div class="md:col-span-2 bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <p class="text-sm font-medium text-blue-900">Ingreso Disponible: ${{ number_format($total_income - $total_expenses, 0, ',', '.') }}</p>
+                        <p class="text-sm font-medium text-blue-900">Ingreso Disponible: ${{ number_format((float)str_replace(['.', ','], ['', '.'], $total_income) - (float)str_replace(['.', ','], ['', '.'], $total_expenses), 0, ',', '.') }}</p>
                     </div>
                     @endif
                 </div>
             </div>
             @endif
 
-            <!-- Paso 5: Referencias -->
-            @if($currentStep === 5)
+            <!-- Paso 4: Referencias -->
+            @if($currentStep === 4)
             <div class="space-y-6">
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Referencias</h3>
                 
@@ -317,8 +323,8 @@
             </div>
             @endif
 
-            <!-- Paso 6: Consentimientos -->
-            @if($currentStep === 6)
+            <!-- Paso 5: Consentimientos -->
+            @if($currentStep === 5)
             <div class="space-y-6">
                 <h3 class="text-xl font-bold text-gray-900 mb-4">Consentimientos y Autorizaciones</h3>
                 

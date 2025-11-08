@@ -10,13 +10,11 @@ class AsesorRoleSeeder extends Seeder
 {
     public function run(): void
     {
-        $asesor = Role::firstOrCreate(
-            ['slug' => 'asesor'],
-            [
-                'name' => 'Asesor',
-                'description' => 'Asesor comercial con permisos para gestionar clientes y contratos de leasing'
-            ]
-        );
+        $asesor = Role::where('slug', 'credit_advisor')->first();
+        
+        if (!$asesor) {
+            throw new \Exception('Rol credit_advisor no encontrado');
+        }
 
         $permissions = Permission::whereIn('slug', [
             'clients.view',

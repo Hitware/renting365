@@ -83,6 +83,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the client profile associated with the user.
+     */
+    public function client(): HasOne
+    {
+        return $this->hasOne(Client::class);
+    }
+
+    /**
      * Get the roles assigned to the user.
      */
     public function roles(): BelongsToMany

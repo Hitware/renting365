@@ -37,7 +37,15 @@
                 </div>
             </div>
 
-            <div class="flex space-x-3">
+            <div class="flex flex-wrap gap-3">
+                @can('payments.register')
+                <button onclick="Livewire.dispatch('openPaymentModal', { contractId: {{ $contract->id }} })" class="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Registrar Pago
+                </button>
+                @endcan
                 @if($contract->signed_contract_path)
                 <a href="{{ route('leasing.contract.view', $contract) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,9 +69,52 @@
             </div>
         </div>
 
+        <!-- Historial de Pagos Realizados -->
+        @php
+            $paidPayments = $contract->payments->where('status', 'pagado');
+        @endphp
+        @if($paidPayments->count() > 0)
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">💰 Historial de Pagos Realizados</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-green-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-green-700">#</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-green-700">Fecha Pago</th>
+                            <th class="px-4 py-2 text-right text-xs font-medium text-green-700">Monto Pagado</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-green-700">Método</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-green-700">Referencia</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-green-700">Recibido Por</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach($paidPayments as $payment)
+                        <tr class="hover:bg-green-50">
+                            <td class="px-4 py-2 text-sm font-medium">{{ $payment->payment_number }}</td>
+                            <td class="px-4 py-2 text-sm">{{ $payment->paid_at ? $payment->paid_at->format('d/m/Y') : '-' }}</td>
+                            <td class="px-4 py-2 text-sm text-right font-bold text-green-600">${{ number_format($payment->amount_paid ?? $payment->amount, 0, ',', '.') }}</td>
+                            <td class="px-4 py-2 text-sm">{{ ucfirst($payment->payment_method ?? '-') }}</td>
+                            <td class="px-4 py-2 text-sm">{{ $payment->reference_number ?? '-' }}</td>
+                            <td class="px-4 py-2 text-sm">{{ $payment->receivedBy->name ?? '-' }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot class="bg-green-50">
+                        <tr>
+                            <td colspan="2" class="px-4 py-3 text-sm font-bold text-green-900">Total Pagado</td>
+                            <td class="px-4 py-3 text-sm text-right font-bold text-green-900">${{ number_format($paidPayments->sum('amount_paid') ?: $paidPayments->sum('amount'), 0, ',', '.') }}</td>
+                            <td colspan="3"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        @endif
+
         <!-- Proyección de Pagos -->
         <div class="bg-white rounded-xl shadow-md p-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-4">Proyección de Pagos</h3>
+            <h3 class="text-lg font-bold text-gray-900 mb-4">📅 Proyección de Pagos</h3>
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -102,8 +153,8 @@
         <div class="bg-white rounded-xl shadow-md p-6">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold text-gray-900">Mantenimientos Programados</h3>
-                <button class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition">
-                    Programar Mantenimiento
+                <button onclick="Livewire.dispatch('openScheduleModal', { contractId: {{ $contract->id }} })" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition">
+                    📅 Programar Mantenimiento
                 </button>
             </div>
             <div class="space-y-4">
@@ -126,4 +177,10 @@
             </div>
         </div>
     </div>
+
+    @can('payments.register')
+    @livewire('payments.payment-registration')
+    @endcan
+    
+    @livewire('maintenance.schedule-maintenance', ['contractId' => $contract->id])
 </x-app-layout>

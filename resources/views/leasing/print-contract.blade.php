@@ -186,7 +186,7 @@
 
     <div style="margin-top: 40px; font-size: 11px; color: #6B7280; text-align: center; border-top: 1px solid #E5E7EB; padding-top: 20px;">
         <p>Documento generado el {{ now()->format('d/m/Y H:i') }}</p>
-        <p>RENTING365 - Cartagena, Colombia - Tel: +57 314 5144067</p>
+        <p>RENTING365 - Cartagena, Colombia - Tel: +57 310 5367376</p>
     </div>
 </body>
 </html>

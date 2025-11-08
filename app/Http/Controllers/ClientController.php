@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\CreditApplication;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -17,6 +18,12 @@ class ClientController extends Controller
     {
         $this->authorize('clients.create');
         return view('clients.create');
+    }
+
+    public function createFromApplication(CreditApplication $application)
+    {
+        $this->authorize('clients.create');
+        return view('clients.create-from-application', compact('application'));
     }
 
     public function store(Request $request)

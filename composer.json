@@ -13,9 +13,11 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
+        "spatie/laravel-activitylog": "^4.10",
         "vinkla/hashids": "^11.0"
     },
     "require-dev": {
+        "doctrine/dbal": "^3.10",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

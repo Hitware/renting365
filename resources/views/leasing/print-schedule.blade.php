@@ -67,10 +67,6 @@
             <span>${{ number_format($contract->financed_amount, 0, ',', '.') }}</span>
         </div>
         <div class="summary-row">
-            <span>Tasa Mensual:</span>
-            <span>{{ number_format($contract->monthly_rate, 2) }}%</span>
-        </div>
-        <div class="summary-row">
             <span>Plazo:</span>
             <span>{{ $contract->term_months }} meses</span>
         </div>
@@ -85,10 +81,9 @@
             <tr>
                 <th>#</th>
                 <th>Fecha Vencimiento</th>
-                <th style="text-align: right;">Cuota</th>
-                <th style="text-align: right;">Capital</th>
-                <th style="text-align: right;">Interés</th>
-                <th style="text-align: right;">Saldo</th>
+                <th style="text-align: right;">Cuota Mensual</th>
+                <th style="text-align: right;">Saldo Pendiente</th>
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -97,19 +92,24 @@
                 <td>{{ $payment->payment_number }}</td>
                 <td>{{ $payment->due_date->format('d/m/Y') }}</td>
                 <td style="text-align: right;">${{ number_format($payment->amount, 0, ',', '.') }}</td>
-                <td style="text-align: right;">${{ number_format($payment->principal, 0, ',', '.') }}</td>
-                <td style="text-align: right;">${{ number_format($payment->interest, 0, ',', '.') }}</td>
                 <td style="text-align: right;">${{ number_format($payment->balance, 0, ',', '.') }}</td>
+                <td>
+                    @if($payment->status === 'pagado')
+                        <span style="color: #059669;">✓ Pagado</span>
+                    @elseif($payment->status === 'atrasado')
+                        <span style="color: #DC2626;">⚠ Atrasado</span>
+                    @else
+                        <span style="color: #6B7280;">○ Pendiente</span>
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr style="background-color: #FFF7ED; font-weight: bold;">
-                <td colspan="2">TOTALES</td>
+                <td colspan="2">TOTAL A PAGAR</td>
                 <td style="text-align: right;">${{ number_format($contract->payments->sum('amount'), 0, ',', '.') }}</td>
-                <td style="text-align: right;">${{ number_format($contract->payments->sum('principal'), 0, ',', '.') }}</td>
-                <td style="text-align: right;">${{ number_format($contract->payments->sum('interest'), 0, ',', '.') }}</td>
-                <td></td>
+                <td colspan="2"></td>
             </tr>
         </tfoot>
     </table>

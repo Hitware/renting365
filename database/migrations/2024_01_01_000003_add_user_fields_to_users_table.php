@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone', 20)->nullable()->after('email');
-            $table->timestamp('email_verified_at')->nullable()->change();
-            $table->timestamp('phone_verified_at')->nullable()->after('email_verified_at');
+            $table->timestamp('phone_verified_at')->nullable()->after('email');
             $table->boolean('is_active')->default(true)->after('password');
             $table->timestamp('last_login_at')->nullable()->after('is_active');
             $table->softDeletes();

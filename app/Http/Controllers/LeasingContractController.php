@@ -10,11 +10,21 @@ class LeasingContractController extends Controller
 {
     public function index()
     {
-        $this->authorize('clients.view');
-
-        $contracts = LeasingContract::with(['client', 'motorcycle'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(15);
+        $user = auth()->user();
+        
+        // Si es cliente, solo ver sus contratos
+        if ($user->hasRole('client')) {
+            $this->authorize('contracts.view-own');
+            $contracts = LeasingContract::with(['client', 'motorcycle'])
+                ->where('client_id', $user->client->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(15);
+        } else {
+            $this->authorize('contracts.view');
+            $contracts = LeasingContract::with(['client', 'motorcycle'])
+                ->orderBy('created_at', 'desc')
+                ->paginate(15);
+        }
 
         return view('leasing.index', compact('contracts'));
     }
@@ -27,7 +37,16 @@ class LeasingContractController extends Controller
 
     public function show(LeasingContract $leasingContract)
     {
-        $this->authorize('clients.view');
+        $user = auth()->user();
+        
+        // Verificar si el usuario tiene un cliente asociado y es su contrato
+        if ($user->client && $leasingContract->client_id === $user->client->id) {
+            // El usuario puede ver su propio contrato
+        } elseif ($user->can('contracts.view')) {
+            // Usuario con permiso general puede ver cualquier contrato
+        } else {
+            abort(403, 'No tienes acceso a este contrato');
+        }
         
         $leasingContract->load([
             'client',
@@ -56,7 +75,16 @@ class LeasingContractController extends Controller
 
     public function viewContract(LeasingContract $leasingContract)
     {
-        $this->authorize('clients.view');
+        $user = auth()->user();
+        
+        if ($user->hasRole('client')) {
+            $this->authorize('contracts.view-own');
+            if ($leasingContract->client_id !== $user->client->id) {
+                abort(403);
+            }
+        } else {
+            $this->authorize('contracts.view');
+        }
 
         if (!$leasingContract->signed_contract_path) {
             abort(404);
@@ -72,7 +100,16 @@ class LeasingContractController extends Controller
 
     public function printPaymentSchedule(LeasingContract $leasingContract)
     {
-        $this->authorize('clients.view');
+        $user = auth()->user();
+        
+        if ($user->hasRole('client')) {
+            $this->authorize('contracts.view-own');
+            if ($leasingContract->client_id !== $user->client->id) {
+                abort(403);
+            }
+        } else {
+            $this->authorize('contracts.view');
+        }
         
         $leasingContract->load(['client', 'motorcycle', 'payments' => function($query) {
             $query->orderBy('payment_number');
@@ -83,7 +120,16 @@ class LeasingContractController extends Controller
 
     public function printContract(LeasingContract $leasingContract)
     {
-        $this->authorize('clients.view');
+        $user = auth()->user();
+        
+        if ($user->hasRole('client')) {
+            $this->authorize('contracts.view-own');
+            if ($leasingContract->client_id !== $user->client->id) {
+                abort(403);
+            }
+        } else {
+            $this->authorize('contracts.view');
+        }
         
         $leasingContract->load(['client', 'motorcycle', 'payments' => function($query) {
             $query->orderBy('payment_number');
